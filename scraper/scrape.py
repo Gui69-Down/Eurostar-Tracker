@@ -1,21 +1,13 @@
 """
-Eurostar weekend price tracker
-------------------------------
-Scrapes eurostar.com for the cheapest fares on:
-  - Friday evening   LDN -> PAR   (weekend a Paris)
-  - Sunday afternoon PAR -> LDN   (retour)
-  - and the reverse combination (weekend a Londres)
-
-Strategy:
-  1. Open the public search page for each date/direction with Playwright.
-  2. Prefer intercepting the JSON responses the booking app fetches
-     (any response containing journey/price data).
-  3. Fall back to DOM/text extraction if no JSON is captured.
-  4. Store the min price within the configured time window into data/history.json.
-
-NOTE: Eurostar has no public API and uses anti-bot protections. This script
-uses a real headless browser and behaves like a normal visitor (2 requests
-per day, ~64 pages), but selectors/URLs may need occasional maintenance.
+Eurostar weekend price tracker — v2
+-----------------------------------
+Changes vs v1:
+  - A time is only accepted as a DEPARTURE if it is immediately followed by a
+    second time whose displayed gap matches the real journey duration
+    (~2h20 travel, +1h timezone towards Paris, -1h towards London).
+    This eliminates arrival times and unrelated times being picked up.
+  - Prices below 29 are rejected (no Eurostar fare exists under ~£29/€35),
+    and the price search zone next to each journey is much narrower.
 """
 
 import json
@@ -39,46 +31,63 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
 PRICE_RE = re.compile(r"[£€]\s?(\d{1,3}(?:[.,]\d{2})?)")
 TIME_RE = re.compile(r"\b([01]?\d|2[0-3]):([0-5]\d)\b")
 
+PRICE_MIN, PRICE_MAX = 29, 500
+
+# Displayed gap (minutes) between departure and arrival local times, per direction.
+# LDN->PAR: ~2h16-2h35 travel + 1h timezone shift  -> 170-235 min displayed
+# PAR->LDN: ~2h16-2h35 travel - 1h timezone shift  ->  55-115 min displayed
+DISPLAY_GAP = {
+    "LDN-PAR": (170, 235),
+    "PAR-LDN": (55, 115),
+}
+
 
 # ---------------------------------------------------------------- dates
 
 def upcoming_fridays(weeks: int) -> list[date]:
     today = date.today()
     days_to_friday = (4 - today.weekday()) % 7
-    first = today + timedelta(days=days_to_friday or 7)  # next Friday, not today
+    first = today + timedelta(days=days_to_friday or 7)
     return [first + timedelta(weeks=w) for w in range(weeks)]
 
 
-# ---------------------------------------------------------------- parsing helpers
+# ---------------------------------------------------------------- helpers
 
 def _within_window(hhmm: str, window: dict) -> bool:
     return window["earliest"] <= hhmm <= window["latest"]
 
 
-def extract_min_price_from_json(payloads: list, window: dict):
-    """Walk any captured JSON payloads looking for journey-like objects
-    that carry a departure time and a price. Deliberately schema-agnostic
-    so it survives minor API changes."""
+def _to_min(hhmm: str) -> int:
+    h, m = hhmm.split(":")
+    return int(h) * 60 + int(m)
+
+
+def _plausible_pair(dep: str, arr: str, direction: str) -> bool:
+    lo, hi = DISPLAY_GAP[direction]
+    gap = (_to_min(arr) - _to_min(dep)) % (24 * 60)
+    return lo <= gap <= hi
+
+
+def extract_min_price_from_json(payloads: list, window: dict, direction: str):
+    """Walk captured JSON payloads for journey objects carrying a departure
+    time and a price. Where an arrival time is present, validate the pair."""
     best = None
 
     def walk(node):
         nonlocal best
         if isinstance(node, dict):
-            blob = json.dumps(node)[:2000]
-            times = TIME_RE.findall(blob)
-            # look for common price keys
             price = None
             for k in ("price", "amount", "totalPrice", "lowestPrice", "adultPrice", "value"):
                 v = node.get(k)
-                if isinstance(v, (int, float)) and 5 < v < 500:
+                if isinstance(v, (int, float)) and PRICE_MIN <= v < PRICE_MAX:
                     price = float(v)
                     break
                 if isinstance(v, dict):
                     inner = v.get("amount") or v.get("value")
-                    if isinstance(inner, (int, float)) and 5 < inner < 500:
+                    if isinstance(inner, (int, float)) and PRICE_MIN <= inner < PRICE_MAX:
                         price = float(inner)
                         break
-            dep = None
+            dep = arr = None
             for k in ("departureTime", "departure", "departAt", "departureDateTime"):
                 v = node.get(k)
                 if isinstance(v, str):
@@ -86,9 +95,18 @@ def extract_min_price_from_json(payloads: list, window: dict):
                     if m:
                         dep = f"{int(m.group(1)):02d}:{m.group(2)}"
                         break
-            if price is not None and dep is not None and _within_window(dep, window):
-                if best is None or price < best["price"]:
-                    best = {"price": price, "dep": dep, "source": "json"}
+            for k in ("arrivalTime", "arrival", "arriveAt", "arrivalDateTime"):
+                v = node.get(k)
+                if isinstance(v, str):
+                    m = TIME_RE.search(v)
+                    if m:
+                        arr = f"{int(m.group(1)):02d}:{m.group(2)}"
+                        break
+            ok = (price is not None and dep is not None
+                  and _within_window(dep, window)
+                  and (arr is None or _plausible_pair(dep, arr, direction)))
+            if ok and (best is None or price < best["price"]):
+                best = {"price": price, "dep": dep, "source": "json"}
             for v in node.values():
                 walk(v)
         elif isinstance(node, list):
@@ -103,25 +121,35 @@ def extract_min_price_from_json(payloads: list, window: dict):
     return best
 
 
-def extract_min_price_from_text(text: str, window: dict):
-    """Fallback: pair times and prices appearing close together in page text."""
+def extract_min_price_from_text(text: str, window: dict, direction: str):
+    """A time only counts as a departure if the NEXT time on the page sits
+    close after it and forms a plausible departure/arrival pair for this
+    direction. The price is then searched just after the arrival time."""
     best = None
-    for m in TIME_RE.finditer(text):
-        dep = f"{int(m.group(1)):02d}:{m.group(2)}"
+    times = [(m.start(), f"{int(m.group(1)):02d}:{m.group(2)}")
+             for m in TIME_RE.finditer(text)]
+    for i, (pos, dep) in enumerate(times):
         if not _within_window(dep, window):
             continue
-        chunk = text[m.end(): m.end() + 220]
+        if i + 1 >= len(times):
+            continue
+        pos2, arr = times[i + 1]
+        if pos2 - pos > 80:               # arrival must sit right next to departure
+            continue
+        if not _plausible_pair(dep, arr, direction):
+            continue
+        chunk = text[pos2: pos2 + 160]     # price sits just after the time pair
         pm = PRICE_RE.search(chunk)
         if pm:
             price = float(pm.group(1).replace(",", "."))
-            if 5 < price < 500 and (best is None or price < best["price"]):
+            if PRICE_MIN <= price < PRICE_MAX and (best is None or price < best["price"]):
                 best = {"price": price, "dep": dep, "source": "dom"}
     return best
 
 
 # ---------------------------------------------------------------- scraping
 
-def scrape_leg(page, origin_code, dest_code, d: date, window: dict, label: str):
+def scrape_leg(page, origin_code, dest_code, d: date, window: dict, label: str, direction: str):
     url = CONFIG["search_url_template"].format(
         origin=origin_code, destination=dest_code, date=d.isoformat()
     )
@@ -141,7 +169,6 @@ def scrape_leg(page, origin_code, dest_code, d: date, window: dict, label: str):
     page.on("response", on_response)
     try:
         page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        # accept cookie banner if present
         for sel in ("#onetrust-accept-btn-handler",
                     "button:has-text('Accept')",
                     "button:has-text('Accepter')"):
@@ -150,11 +177,11 @@ def scrape_leg(page, origin_code, dest_code, d: date, window: dict, label: str):
                 break
             except Exception:
                 continue
-        page.wait_for_timeout(9000)  # let the results app load & fetch
-        result = extract_min_price_from_json(captured, window)
+        page.wait_for_timeout(9000)
+        result = extract_min_price_from_json(captured, window, direction)
         if result is None:
             body = page.inner_text("body")
-            result = extract_min_price_from_text(body, window)
+            result = extract_min_price_from_text(body, window, direction)
         if result is None:
             DEBUG_DIR.mkdir(parents=True, exist_ok=True)
             (DEBUG_DIR / f"{label}_{d.isoformat()}.txt").write_text(
@@ -177,14 +204,11 @@ def main():
     legs = []
     for fri in fridays:
         sun = fri + timedelta(days=2)
-        # Weekend a Paris: LDN->PAR vendredi soir, PAR->LDN dimanche
         legs.append(("LDN-PAR", fri, CONFIG["legs"]["friday_evening"]))
         legs.append(("PAR-LDN", sun, CONFIG["legs"]["sunday_return"]))
-        # Weekend a Londres (inverse)
         legs.append(("PAR-LDN", fri, CONFIG["legs"]["friday_evening"]))
         legs.append(("LDN-PAR", sun, CONFIG["legs"]["sunday_return"]))
 
-    # dedupe (same leg can appear for both weekend directions)
     seen, unique_legs = set(), []
     for direction, d, window in legs:
         key = (direction, d.isoformat(), window["earliest"])
@@ -200,13 +224,14 @@ def main():
         for direction, d, window in unique_legs:
             o, dst = direction.split("-")
             label = f"{direction}_{window['earliest']}"
-            res = scrape_leg(page, stations[o]["code"], stations[dst]["code"], d, window, label)
+            res = scrape_leg(page, stations[o]["code"], stations[dst]["code"],
+                             d, window, label, direction)
             if res:
                 key = f"{d.isoformat()}_{direction}_{window['earliest']}"
                 history.setdefault(key, []).append(
                     {"ts": now, "price": res["price"], "dep": res["dep"]}
                 )
-            time.sleep(random.uniform(4, 9))  # polite pacing
+            time.sleep(random.uniform(4, 9))
         browser.close()
 
     HISTORY_PATH.parent.mkdir(parents=True, exist_ok=True)
