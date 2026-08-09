@@ -17,7 +17,7 @@ LondresParis
 ven. 11 sept.
 vendredi 11 septembre
 -
-117 €
+131 €
 sam. 12 sept.
 samedi 12 septembre
 -
@@ -410,10 +410,8 @@ Direct
 151 €
 
 ,  Départ de: 19:01, Eurostar Standard, 2 heures 28 minutes, Direct
-+14 €
-Surclassez-vous en Eurostar Plus pour +14 €
 
-165 €
+193 €
 
 ,  Départ de: 19:01, Eurostar Plus, 2 heures 28 minutes, Direct
 

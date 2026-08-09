@@ -25,7 +25,7 @@ jeudi 10 septembre
 ven. 11 sept.
 vendredi 11 septembre
 -
-117 €
+131 €
 sam. 12 sept.
 samedi 12 septembre
 -
@@ -53,6 +53,7 @@ Direct
 
 131 €
 
+Meilleur tarif
 ,  Départ de: 06:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 193 €
@@ -368,6 +369,7 @@ Direct
 
 131 €
 
+Meilleur tarif
 ,  Départ de: 16:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 220 €
@@ -393,6 +395,7 @@ Direct
 
 131 €
 
+Meilleur tarif
 ,  Départ de: 16:31, Eurostar Standard, 2 heures 28 minutes, Direct
 
 193 €
@@ -418,6 +421,7 @@ Direct
 
 131 €
 
+Meilleur tarif
 ,  Départ de: 17:31, Eurostar Standard, 2 heures 29 minutes, Direct
 
 220 €
@@ -443,6 +447,7 @@ Direct
 
 131 €
 
+Meilleur tarif
 ,  Départ de: 18:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 220 €
@@ -491,7 +496,7 @@ minutes
 
 Direct
 
-117 €
+131 €
 
 Meilleur tarif
 ,  Départ de: 20:01, Eurostar Standard, 2 heures 28 minutes, Direct
