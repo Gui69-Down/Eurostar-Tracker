@@ -14,5 +14,5 @@
     "drop_pct_trigger": 15,
     "min_hours_between_same_alert": 20
   },
-  "search_url_template": "https://www.eurostar.com/uk-en/train-search?origin={origin}&destination={destination}&outbound-date={date}&adult=1"
+  "search_url_template": "https://www.eurostar.com/search/uk-en?adult=1&origin={origin}&destination={destination}&outbound={date}"
 }
