@@ -1,18 +1,18 @@
 {
   "weeks_ahead": 16,
-  "currency_hint": "GBP",
+  "currency_hint": "EUR",
   "stations": {
     "LDN": { "code": "7015400", "name": "London St Pancras Intl" },
     "PAR": { "code": "8727100", "name": "Paris Gare du Nord" }
   },
   "legs": {
-    "friday_evening": { "day": "FRI", "earliest": "17:00", "latest": "21:30" },
-    "sunday_return":  { "day": "SUN", "earliest": "14:00", "latest": "21:30" }
+    "friday_evening": { "day": "FRI", "earliest": "19:00", "latest": "21:30" },
+    "sunday_return":  { "day": "SUN", "earliest": "19:00", "latest": "21:30" }
   },
   "alerts": {
-    "weekend_total_threshold": 110,
+    "weekend_total_threshold": 130,
     "drop_pct_trigger": 15,
     "min_hours_between_same_alert": 20
   },
-  "search_url_template": "https://www.eurostar.com/search/uk-en?adult=1&origin={origin}&destination={destination}&outbound={date}"
+  "search_url_template": "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={date}"
 }
