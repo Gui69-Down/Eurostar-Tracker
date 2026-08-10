@@ -1,19 +1,22 @@
 """
-Eurostar weekend price tracker — v6
+Eurostar weekend price tracker — v7
 -----------------------------------
-Changes vs v5:
-  - Fixed return-leg contamination: clicking the outbound fare puts it in the
-    basket, and Eurostar's basket API returns JSON with that journey's
-    departure time and price. The JSON extractor accepted departure+price
-    nodes with NO arrival time, so the return leg picked up the selected
-    OUTBOUND from the basket (e.g. "19:01 44.0" duplicated on both legs).
-  - Fix 1: JSON candidates now REQUIRE an arrival time that passes the
-    direction-aware gap validation. No arrival -> rejected.
-  - Fix 2: extraction order flipped: DOM (the rendered page = what you would
-    actually pay) is primary, JSON is only a fallback.
+Changes vs v6:
+  - The debug dump showed the v5/v6 click was hitting the "Eurostar Standard"
+    COLUMN HEADER, not a fare: after the click the page still said
+    "Aucun train choisi" and remained on the outbound results.
+  - Fix 1: fare clicks now target '[aria-label*="Départ de:"][aria-label*=
+    "Eurostar Standard"]' — real fare cells carry both fragments in their
+    aria-label; the header carries neither.
+  - Fix 2: after selecting a fare, click the "Suivant" (choix retour) button
+    to actually advance the funnel to the return page.
+  - Fix 3: before extracting the return leg, VERIFY the page contains
+    "(voyage retour)". If not, dump and skip — never extract from the wrong
+    page. This eliminates duplicated outbound prices for good.
+Kept from v6:
+  - DOM-first extraction; JSON fallback requires a validated arrival time.
 Kept from v5:
-  - Real booking funnel: load outbound results, extract, CLICK a Standard
-    fare to reach the "Voyage retour" page, extract the return there.
+  - Real booking funnel (no "&direction=inbound" URL).
 Kept from v4:
   - Round-trip searches via config "roundtrip_url_template".
 Kept from v3:
@@ -57,6 +60,8 @@ DISPLAY_GAP = {
     "LDN-PAR": (170, 235),
     "PAR-LDN": (55, 115),
 }
+
+RETURN_PAGE_MARKER = "voyage retour)"   # appears as "(voyage retour)" only on the return results page
 
 
 # ---------------------------------------------------------------- dates
@@ -203,9 +208,55 @@ def _dismiss_popups(page):
             continue
 
 
+def _dump(page, name):
+    DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+    (DEBUG_DIR / f"{name}.txt").write_text(page.inner_text("body")[:20000])
+
+
+def _open_return_page(page) -> bool:
+    """Select a Standard fare (real fare cells carry both 'Départ de:' and
+    'Eurostar Standard' in their aria-label), then click 'Suivant' to reach
+    the return results page. Returns True once '(voyage retour)' is shown."""
+    # 1) select a fare
+    fare_clicked = False
+    for sel in ('[aria-label*="Départ de:"][aria-label*="Eurostar Standard"]',
+                '[aria-label*="Départ de"][aria-label*="Standard"]'):
+        try:
+            page.locator(sel).first.click(timeout=6000)
+            fare_clicked = True
+            break
+        except Exception:
+            continue
+    if not fare_clicked:
+        return False
+    page.wait_for_timeout(2000)
+    _dismiss_popups(page)
+
+    # 2) advance to the return step (button may be labelled "Suivant : choix retour")
+    for sel in ("button:has-text('Suivant')",
+                "button:has-text('choix retour')",
+                "a:has-text('Suivant')"):
+        try:
+            page.locator(sel).first.click(timeout=4000)
+            break
+        except Exception:
+            continue
+    _dismiss_popups(page)
+
+    # 3) wait until the return page marker appears (up to ~15s)
+    for _ in range(15):
+        page.wait_for_timeout(1000)
+        try:
+            if RETURN_PAGE_MARKER in page.inner_text("body"):
+                return True
+        except Exception:
+            continue
+    return False
+
+
 def scrape_trip(page, trip):
-    """One round trip = outbound results page, then click a Standard fare to
-    advance the funnel to the return results page, extract both."""
+    """One round trip = outbound results page, then advance the funnel to the
+    verified return results page, extract both legs."""
     captured = []
 
     def on_response(resp):
@@ -230,29 +281,16 @@ def scrape_trip(page, trip):
         out_res = _extract_current(page, captured, trip["out_date"],
                                    trip["out_window"], out_label, trip["out_dir"])
 
-        # ---- advance to return leg: click the first Standard fare
+        # ---- advance to verified return page
         captured.clear()
-        clicked = False
-        for sel in ('[aria-label*="Eurostar Standard"]',
-                    'button:has-text("Eurostar Standard")'):
-            try:
-                page.locator(sel).first.click(timeout=6000)
-                clicked = True
-                break
-            except Exception:
-                continue
         ret_label = f"{trip['ret_dir']}_{trip['ret_window']['earliest']}_RET"
-        if not clicked:
-            DEBUG_DIR.mkdir(parents=True, exist_ok=True)
-            (DEBUG_DIR / f"{ret_label}_{trip['ret_date'].isoformat()}_noclick.txt").write_text(
-                page.inner_text("body")[:20000]
-            )
-            print(f"  !! could not open return page for {ret_label} "
+        if not _open_return_page(page):
+            _dump(page, f"{ret_label}_{trip['ret_date'].isoformat()}_wrongpage")
+            print(f"  !! return page not reached for {ret_label} "
                   f"{trip['ret_date']} (debug dump saved)")
             return out_res, None
 
-        _dismiss_popups(page)
-        page.wait_for_timeout(9000)
+        page.wait_for_timeout(7000)
         ret_res = _extract_current(page, captured, trip["ret_date"],
                                    trip["ret_window"], ret_label, trip["ret_dir"])
         return out_res, ret_res
