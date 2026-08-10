@@ -17,7 +17,7 @@ ParisLondres
 mer. 2 sept.
 mercredi 2 septembre
 -
-75 €
+87 €
 jeu. 3 sept.
 jeudi 3 septembre
 -
@@ -179,7 +179,7 @@ Surclassez-vous en Eurostar Plus pour +12 €
 
 375 €
 
-25 places restantes
+24 places restantes
 ,  Départ de: 11:08, Eurostar Premier, 2 heures 22 minutes, Direct
 Votre voyage
 Départ de:
@@ -224,7 +224,7 @@ Direct
 
 ,  Départ de: 13:06, Eurostar Standard, 2 heures 24 minutes, Direct
 
-207 €
+179 €
 
 ,  Départ de: 13:06, Eurostar Plus, 2 heures 24 minutes, Direct
 
@@ -300,11 +300,11 @@ minutes
 
 Direct
 
-156 €
+133 €
 
 ,  Départ de: 15:59, Eurostar Standard, 2 heures 36 minutes, Direct
 
-207 €
+179 €
 
 ,  Départ de: 15:59, Eurostar Plus, 2 heures 36 minutes, Direct
 
@@ -413,7 +413,7 @@ Direct
 
 ,  Départ de: 19:01, Eurostar Standard, 2 heures 29 minutes, Direct
 
-150 €
+179 €
 
 ,  Départ de: 19:01, Eurostar Plus, 2 heures 29 minutes, Direct
 

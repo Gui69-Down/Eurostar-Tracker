@@ -17,7 +17,7 @@ LondresParis
 mer. 12 août
 mercredi 12 août
 -
-179 €
+207 €
 jeu. 13 août
 jeudi 13 août
 -
@@ -154,20 +154,18 @@ minutes
 
 Direct
 
-262 €
+234 €
 
 ,  Départ de: 10:31, Eurostar Standard, 2 heures 18 minutes, Direct
-+14 €
-Surclassez-vous en Eurostar Plus pour +14 €
 
-276 €
+303 €
 
-28 places restantes
+23 places restantes
 ,  Départ de: 10:31, Eurostar Plus, 2 heures 18 minutes, Direct
 
-379 €
+400 €
 
-27 places restantes
+28 places restantes
 ,  Départ de: 10:31, Eurostar Premier, 2 heures 18 minutes, Direct
 Votre voyage
 Départ de:
@@ -194,7 +192,7 @@ Direct
 
 538 €
 
-16 places restantes
+15 places restantes
 ,  Départ de: 11:31, Eurostar Premier, 2 heures 18 minutes, Direct
 Votre voyage
 Départ de:
@@ -216,7 +214,7 @@ Direct
 
 331 €
 
-14 places restantes
+16 places restantes
 ,  Départ de: 12:01, Eurostar Plus, 2 heures 18 minutes, Direct
 
 379 €
@@ -242,7 +240,7 @@ Direct
 
 331 €
 
-23 places restantes
+24 places restantes
 ,  Départ de: 12:31, Eurostar Plus, 2 heures 18 minutes, Direct
 
 379 €
@@ -268,7 +266,7 @@ Direct
 
 303 €
 
-16 places restantes
+15 places restantes
 ,  Départ de: 13:31, Eurostar Plus, 2 heures 18 minutes, Direct
 
 379 €
@@ -426,7 +424,7 @@ Direct
 
 276 €
 
-24 places restantes
+22 places restantes
 ,  Départ de: 18:01, Eurostar Plus, 2 heures 18 minutes, Direct
 
 379 €
@@ -445,21 +443,11 @@ heures
 minutes
 
 Direct
-
-262 €
-
+Non disponible
 ,  Départ de: 19:01, Eurostar Standard, 2 heures 18 minutes, Direct
-
-372 €
-
-14 places restantes
+Non disponible
 ,  Départ de: 19:01, Eurostar Plus, 2 heures 18 minutes, Direct
-+7 €
-Surclassez-vous en Eurostar Premier pour +7 €
-
-379 €
-
-30 places restantes
+Non disponible
 ,  Départ de: 19:01, Eurostar Premier, 2 heures 18 minutes, Direct
 Votre voyage
 Départ de:

@@ -17,7 +17,7 @@ ParisLondres
 ven. 18 sept.
 vendredi 18 septembre
 -
-75 €
+87 €
 sam. 19 sept.
 samedi 19 septembre
 -
@@ -25,7 +25,7 @@ samedi 19 septembre
 dim. 20 sept.
 dimanche 20 septembre
 -
-110 €
+121 €
 lun. 21 sept.
 lundi 21 septembre
 -
@@ -85,6 +85,7 @@ Direct
 
 121 €
 
+Meilleur tarif
 ,  Départ de: 10:01, Eurostar Standard, 2 heures 29 minutes, Direct
 
 207 €
@@ -108,12 +109,12 @@ minutes
 
 Direct
 
-110 €
+121 €
 
 Meilleur tarif
 ,  Départ de: 10:30, Eurostar Standard, 2 heures 30 minutes, Direct
 
-179 €
+207 €
 
 ,  Départ de: 10:30, Eurostar Plus, 2 heures 30 minutes, Direct
 
@@ -186,6 +187,7 @@ Direct
 
 121 €
 
+Meilleur tarif
 ,  Départ de: 13:11, Eurostar Standard, 2 heures 19 minutes, Direct
 
 207 €

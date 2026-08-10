@@ -25,7 +25,7 @@ jeudi 26 novembre
 ven. 27 nov.
 vendredi 27 novembre
 -
-60 €
+67 €
 sam. 28 nov.
 samedi 28 novembre
 -
@@ -53,6 +53,7 @@ Direct
 
 67 €
 
+Meilleur tarif
 ,  Départ de: 06:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 117 €
@@ -303,6 +304,7 @@ Direct
 
 67 €
 
+Meilleur tarif
 ,  Départ de: 14:31, Eurostar Standard, 2 heures 28 minutes, Direct
 
 117 €
@@ -326,7 +328,7 @@ minutes
 
 Direct
 
-60 €
+67 €
 
 Meilleur tarif
 ,  Départ de: 15:31, Eurostar Standard, 2 heures 28 minutes, Direct
@@ -354,6 +356,7 @@ Direct
 
 67 €
 
+Meilleur tarif
 ,  Départ de: 16:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 117 €
@@ -379,6 +382,7 @@ Direct
 
 67 €
 
+Meilleur tarif
 ,  Départ de: 16:31, Eurostar Standard, 2 heures 28 minutes, Direct
 
 117 €
@@ -404,6 +408,7 @@ Direct
 
 67 €
 
+Meilleur tarif
 ,  Départ de: 17:31, Eurostar Standard, 2 heures 29 minutes, Direct
 
 165 €
@@ -479,6 +484,7 @@ Direct
 
 67 €
 
+Meilleur tarif
 ,  Départ de: 20:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 117 €

@@ -33,7 +33,7 @@ samedi 29 août
 dim. 30 août
 dimanche 30 août
 -
-133 €
+121 €
 Eurostar Standard
 Eurostar Plus
 Eurostar Premier
@@ -56,9 +56,11 @@ minutes
 
 Direct
 
-190 €
+156 €
 
 ,  Départ de: 06:55, Eurostar Standard, 2 heures 35 minutes, Direct
++23 €
+Surclassez-vous en Eurostar Plus pour +23 €
 
 179 €
 
@@ -118,7 +120,7 @@ Surclassez-vous en Eurostar Plus pour +17 €
 
 375 €
 
-29 places restantes
+28 places restantes
 ,  Départ de: 08:58, Eurostar Premier, 2 heures 32 minutes, Direct
 Votre voyage
 Départ de:
@@ -246,8 +248,10 @@ Direct
 
 Meilleur tarif
 ,  Départ de: 13:06, Eurostar Standard, 2 heures 24 minutes, Direct
++29 €
+Surclassez-vous en Eurostar Plus pour +29 €
 
-179 €
+150 €
 
 ,  Départ de: 13:06, Eurostar Plus, 2 heures 24 minutes, Direct
 
@@ -323,13 +327,11 @@ minutes
 
 Direct
 
-133 €
+156 €
 
 ,  Départ de: 15:59, Eurostar Standard, 2 heures 36 minutes, Direct
-+17 €
-Surclassez-vous en Eurostar Plus pour +17 €
 
-150 €
+207 €
 
 ,  Départ de: 15:59, Eurostar Plus, 2 heures 36 minutes, Direct
 

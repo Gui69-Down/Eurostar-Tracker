@@ -185,11 +185,13 @@ minutes
 
 Direct
 
-121 €
+98 €
 
 ,  Départ de: 12:02, Eurostar Standard, 2 heures 28 minutes, Direct
++29 €
+Surclassez-vous en Eurostar Plus pour +29 €
 
-179 €
+127 €
 
 ,  Départ de: 12:02, Eurostar Plus, 2 heures 28 minutes, Direct
 
@@ -210,11 +212,11 @@ minutes
 
 Direct
 
-75 €
+63 €
 
 ,  Départ de: 13:11, Eurostar Standard, 2 heures 19 minutes, Direct
 
-150 €
+127 €
 
 ,  Départ de: 13:11, Eurostar Plus, 2 heures 19 minutes, Direct
 

@@ -29,11 +29,11 @@ vendredi 21 août
 sam. 22 août
 samedi 22 août
 -
-133 €
+121 €
 dim. 23 août
 dimanche 23 août
 -
-133 €
+156 €
 Eurostar Standard
 Eurostar Plus
 Eurostar Premier
@@ -237,9 +237,8 @@ minutes
 
 Direct
 
-121 €
+133 €
 
-Meilleur tarif
 ,  Départ de: 13:06, Eurostar Standard, 2 heures 24 minutes, Direct
 
 207 €
@@ -350,6 +349,7 @@ Direct
 
 375 €
 
+30 places restantes
 ,  Départ de: 16:27, Eurostar Premier, 2 heures 33 minutes, Direct
 Votre voyage
 Départ de:
@@ -416,9 +416,8 @@ minutes
 
 Direct
 
-121 €
+133 €
 
-Meilleur tarif
 ,  Départ de: 19:01, Eurostar Standard, 2 heures 29 minutes, Direct
 
 207 €

@@ -21,11 +21,11 @@ vendredi 21 août
 sam. 22 août
 samedi 22 août
 -
-133 €
+121 €
 dim. 23 août
 dimanche 23 août
 -
-133 €
+156 €
 lun. 24 août
 lundi 24 août
 -
@@ -85,6 +85,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 10:07, Eurostar Standard, 2 heures 23 minutes, Direct
 
 207 €
@@ -110,6 +111,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 10:37, Eurostar Standard, 2 heures 23 minutes, Direct
 
 207 €
@@ -133,7 +135,7 @@ minutes
 
 Direct
 
-133 €
+156 €
 
 Meilleur tarif
 ,  Départ de: 11:06, Eurostar Standard, 2 heures 29 minutes, Direct
@@ -161,6 +163,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 12:02, Eurostar Standard, 2 heures 28 minutes, Direct
 
 236 €
@@ -186,9 +189,10 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 13:07, Eurostar Standard, 2 heures 23 minutes, Direct
 
-236 €
+265 €
 
 ,  Départ de: 13:07, Eurostar Plus, 2 heures 23 minutes, Direct
 
@@ -211,6 +215,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 13:37, Eurostar Standard, 2 heures 23 minutes, Direct
 
 236 €
@@ -236,6 +241,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 14:36, Eurostar Standard, 2 heures 29 minutes, Direct
 
 265 €
@@ -261,6 +267,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 15:01, Eurostar Standard, 2 heures 34 minutes, Direct
 
 236 €
@@ -269,7 +276,7 @@ Direct
 
 375 €
 
-30 places restantes
+28 places restantes
 ,  Départ de: 15:01, Eurostar Premier, 2 heures 34 minutes, Direct
 Votre voyage
 Départ de:
@@ -287,9 +294,10 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 16:03, Eurostar Standard, 2 heures 32 minutes, Direct
 
-207 €
+236 €
 
 ,  Départ de: 16:03, Eurostar Plus, 2 heures 32 minutes, Direct
 
@@ -312,6 +320,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 16:29, Eurostar Standard, 2 heures 31 minutes, Direct
 
 236 €
@@ -337,6 +346,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 17:00, Eurostar Standard, 2 heures 30 minutes, Direct
 
 236 €
@@ -362,6 +372,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 17:58, Eurostar Standard, 2 heures 40 minutes, Direct
 
 236 €
@@ -388,6 +399,7 @@ Direct
 
 156 €
 
+Meilleur tarif
 ,  Départ de: 18:32, Eurostar Standard, 2 heures 28 minutes, Direct
 
 236 €
@@ -396,7 +408,6 @@ Direct
 
 375 €
 
-30 places restantes
 ,  Départ de: 18:32, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:
@@ -422,7 +433,7 @@ Direct
 
 375 €
 
-27 places restantes
+28 places restantes
 ,  Départ de: 19:02, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:

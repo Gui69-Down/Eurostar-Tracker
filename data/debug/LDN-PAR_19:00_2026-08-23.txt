@@ -25,7 +25,7 @@ samedi 22 août
 dim. 23 août
 dimanche 23 août
 -
-151 €
+179 €
 lun. 24 août
 lundi 24 août
 -
@@ -57,6 +57,7 @@ Direct
 
 248 €
 
+30 places restantes
 ,  Départ de: 08:01, Eurostar Plus, 2 heures 23 minutes, Direct
 
 379 €
@@ -76,7 +77,7 @@ minutes
 
 Direct
 
-234 €
+262 €
 
 ,  Départ de: 09:31, Eurostar Standard, 2 heures 24 minutes, Direct
 
@@ -180,7 +181,7 @@ minutes
 
 Direct
 
-207 €
+234 €
 
 ,  Départ de: 12:31, Eurostar Standard, 2 heures 23 minutes, Direct
 
@@ -209,9 +210,9 @@ Direct
 
 ,  Départ de: 13:31, Eurostar Standard, 2 heures 26 minutes, Direct
 
-248 €
+276 €
 
-27 places restantes
+28 places restantes
 ,  Départ de: 13:31, Eurostar Plus, 2 heures 26 minutes, Direct
 
 379 €
@@ -308,6 +309,7 @@ Direct
 
 179 €
 
+Meilleur tarif
 ,  Départ de: 16:01, Eurostar Standard, 2 heures 26 minutes, Direct
 
 220 €
@@ -333,6 +335,7 @@ Direct
 
 179 €
 
+Meilleur tarif
 ,  Départ de: 16:31, Eurostar Standard, 2 heures 35 minutes, Direct
 
 220 €
@@ -358,6 +361,7 @@ Direct
 
 179 €
 
+Meilleur tarif
 ,  Départ de: 17:31, Eurostar Standard, 2 heures 27 minutes, Direct
 
 220 €
@@ -410,6 +414,7 @@ Direct
 
 179 €
 
+Meilleur tarif
 ,  Départ de: 19:01, Eurostar Standard, 2 heures 25 minutes, Direct
 
 220 €
@@ -435,6 +440,7 @@ Direct
 
 179 €
 
+Meilleur tarif
 ,  Départ de: 20:01, Eurostar Standard, 2 heures 24 minutes, Direct
 +14 €
 Surclassez-vous en Eurostar Plus pour +14 €
@@ -460,7 +466,7 @@ minutes
 
 Direct
 
-151 €
+179 €
 
 Meilleur tarif
 ,  Départ de: 20:31, Eurostar Standard, 2 heures 24 minutes, Direct

@@ -186,7 +186,7 @@ Direct
 30 places restantes
 ,  Départ de: 10:31, Eurostar Plus, 2 heures 28 minutes, Direct
 
-400 €
+379 €
 
 ,  Départ de: 10:31, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
@@ -262,7 +262,7 @@ Direct
 
 303 €
 
-30 places restantes
+29 places restantes
 ,  Départ de: 12:31, Eurostar Plus, 2 heures 28 minutes, Direct
 
 379 €

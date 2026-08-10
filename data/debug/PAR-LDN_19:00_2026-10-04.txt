@@ -25,7 +25,7 @@ samedi 3 octobre
 dim. 4 oct.
 dimanche 4 octobre
 -
-57 €
+63 €
 lun. 5 oct.
 lundi 5 octobre
 -
@@ -56,7 +56,7 @@ minutes
 
 Direct
 
-57 €
+63 €
 
 Meilleur tarif
 ,  Départ de: 08:02, Eurostar Standard, 2 heures 28 minutes, Direct
@@ -82,8 +82,9 @@ minutes
 
 Direct
 
-75 €
+63 €
 
+Meilleur tarif
 ,  Départ de: 09:02, Eurostar Standard, 2 heures 28 minutes, Direct
 
 110 €
@@ -280,11 +281,11 @@ minutes
 
 Direct
 
-98 €
+87 €
 
 ,  Départ de: 18:02, Eurostar Standard, 2 heures 37 minutes, Direct
 
-150 €
+179 €
 
 ,  Départ de: 18:02, Eurostar Plus, 2 heures 37 minutes, Direct
 

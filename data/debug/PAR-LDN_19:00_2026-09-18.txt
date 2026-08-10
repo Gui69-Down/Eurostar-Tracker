@@ -25,7 +25,7 @@ jeudi 17 septembre
 ven. 18 sept.
 vendredi 18 septembre
 -
-75 €
+87 €
 sam. 19 sept.
 samedi 19 septembre
 -
@@ -33,7 +33,7 @@ samedi 19 septembre
 dim. 20 sept.
 dimanche 20 septembre
 -
-110 €
+121 €
 Eurostar Standard
 Eurostar Plus
 Eurostar Premier
@@ -56,10 +56,12 @@ minutes
 
 Direct
 
-75 €
+87 €
 
 Meilleur tarif
 ,  Départ de: 07:02, Eurostar Standard, 2 heures 28 minutes, Direct
++23 €
+Surclassez-vous en Eurostar Plus pour +23 €
 
 110 €
 
@@ -84,6 +86,7 @@ Direct
 
 87 €
 
+Meilleur tarif
 ,  Départ de: 07:32, Eurostar Standard, 2 heures 28 minutes, Direct
 
 127 €
@@ -490,6 +493,7 @@ Direct
 
 87 €
 
+Meilleur tarif
 ,  Départ de: 20:33, Eurostar Standard, 2 heures 27 minutes, Direct
 
 127 €
@@ -515,6 +519,7 @@ Direct
 
 87 €
 
+Meilleur tarif
 ,  Départ de: 21:02, Eurostar Standard, 2 heures 28 minutes, Direct
 +23 €
 Surclassez-vous en Eurostar Plus pour +23 €
