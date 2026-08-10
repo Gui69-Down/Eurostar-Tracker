@@ -17,3 +17,4 @@
   "search_url_template": "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={date}",
   "roundtrip_url_template": "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={outbound}&inbound={inbound}"
 }
+
