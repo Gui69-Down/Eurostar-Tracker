@@ -1,17 +1,19 @@
 """
-Eurostar weekend price tracker — v5
+Eurostar weekend price tracker — v6
 -----------------------------------
-Changes vs v4:
-  - The "&direction=inbound" URL proved unreliable headless: without an
-    outbound train selected, Eurostar sometimes re-renders the OUTBOUND
-    results, so the return leg duplicated the outbound price/time.
-  - v5 follows the real booking funnel instead: load the outbound results,
-    extract the outbound fare, then CLICK a Standard fare to advance to the
-    "Voyage retour" page, and extract the return fare from that page.
-  - Direction-aware arrival validation (kept from v2) doubles as a guard:
-    if the return page ever shows outbound trains again, their time gaps
-    fail the reversed-direction check and the leg is dumped for debugging
-    instead of recording a wrong price.
+Changes vs v5:
+  - Fixed return-leg contamination: clicking the outbound fare puts it in the
+    basket, and Eurostar's basket API returns JSON with that journey's
+    departure time and price. The JSON extractor accepted departure+price
+    nodes with NO arrival time, so the return leg picked up the selected
+    OUTBOUND from the basket (e.g. "19:01 44.0" duplicated on both legs).
+  - Fix 1: JSON candidates now REQUIRE an arrival time that passes the
+    direction-aware gap validation. No arrival -> rejected.
+  - Fix 2: extraction order flipped: DOM (the rendered page = what you would
+    actually pay) is primary, JSON is only a fallback.
+Kept from v5:
+  - Real booking funnel: load outbound results, extract, CLICK a Standard
+    fare to reach the "Voyage retour" page, extract the return there.
 Kept from v4:
   - Round-trip searches via config "roundtrip_url_template".
 Kept from v3:
@@ -89,8 +91,10 @@ def _price_from_match(pm) -> float:
 
 
 def extract_min_price_from_json(payloads: list, window: dict, direction: str):
-    """Walk captured JSON payloads for journey objects carrying a departure
-    time and a price. Where an arrival time is present, validate the pair."""
+    """Walk captured JSON payloads for journey objects. A candidate MUST have
+    a departure time in the window, a price, AND an arrival time forming a
+    plausible pair for this direction. Nodes without an arrival are rejected
+    (they are typically basket/selection payloads, not search results)."""
     best = None
 
     def walk(node):
@@ -122,9 +126,9 @@ def extract_min_price_from_json(payloads: list, window: dict, direction: str):
                     if m:
                         arr = f"{int(m.group(1)):02d}:{m.group(2)}"
                         break
-            ok = (price is not None and dep is not None
+            ok = (price is not None and dep is not None and arr is not None
                   and _within_window(dep, window)
-                  and (arr is None or _plausible_pair(dep, arr, direction)))
+                  and _plausible_pair(dep, arr, direction))
             if ok and (best is None or price < best["price"]):
                 best = {"price": price, "dep": dep, "source": "json"}
             for v in node.values():
@@ -170,16 +174,15 @@ def extract_min_price_from_text(text: str, window: dict, direction: str):
 # ---------------------------------------------------------------- scraping
 
 def _extract_current(page, captured, d, window, label, direction):
-    """Extract the cheapest in-window fare from whatever the page shows now."""
-    result = extract_min_price_from_json(captured, window, direction)
+    """Extract the cheapest in-window fare from whatever the page shows now.
+    DOM first (rendered price = bookable price), JSON as fallback."""
+    body = page.inner_text("body")
+    result = extract_min_price_from_text(body, window, direction)
     if result is None:
-        body = page.inner_text("body")
-        result = extract_min_price_from_text(body, window, direction)
+        result = extract_min_price_from_json(captured, window, direction)
     if result is None:
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
-        (DEBUG_DIR / f"{label}_{d.isoformat()}.txt").write_text(
-            page.inner_text("body")[:20000]
-        )
+        (DEBUG_DIR / f"{label}_{d.isoformat()}.txt").write_text(body[:20000])
         print(f"  !! no price found for {label} {d} (debug dump saved)")
     else:
         print(f"  {label} {d}: {result['price']} at {result['dep']} ({result['source']})")
