@@ -14,5 +14,6 @@
     "drop_pct_trigger": 15,
     "min_hours_between_same_alert": 20
   },
-  "search_url_template": "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={date}"
+  "search_url_template": "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={date}",
+  "roundtrip_url_template": "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={outbound}&inbound={inbound}"
 }
