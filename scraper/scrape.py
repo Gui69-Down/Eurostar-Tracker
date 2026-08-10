@@ -1,18 +1,22 @@
 """
-Eurostar weekend price tracker — v3
+Eurostar weekend price tracker — v4
 -----------------------------------
-Changes vs v2:
-  - PRICE_RE now matches prices in BOTH symbol-first ("£39", "€39.00") and
-    French symbol-last ("234 €", "39,00 €") formats. The fr-fr market renders
-    prices symbol-last, which made v2's DOM fallback match nothing at all.
-  - Price extraction reads whichever regex group matched.
-Changes vs v1 (kept from v2):
-  - A time is only accepted as a DEPARTURE if it is immediately followed by a
-    second time whose displayed gap matches the real journey duration
-    (~2h20 travel, +1h timezone towards Paris, -1h towards London).
-    This eliminates arrival times and unrelated times being picked up.
-  - Prices below 29 are rejected (no Eurostar fare exists under ~£29/€35),
-    and the price search zone next to each journey is much narrower.
+Changes vs v3:
+  - Searches ROUND TRIPS instead of one-ways. Eurostar prices the same leg
+    differently depending on search type, and since the real use case is a
+    Fri->Sun weekend return, we now query with both outbound and inbound
+    dates so tracked prices match what you'd actually pay.
+  - Each weekend produces two trips (LDN->PAR->LDN and PAR->LDN->PAR), and
+    each trip is scraped twice: once for the outbound page, once for the
+    return page (same URL + "&direction=inbound").
+  - config.json must now contain "roundtrip_url_template", e.g.:
+      "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={outbound}&inbound={inbound}"
+Kept from v3:
+  - PRICE_RE matches both "£39"/"€39.00" and French "234 €"/"39,00 €".
+Kept from v2:
+  - Departure times validated by pairing with a plausible arrival time
+    (travel duration +/- timezone shift per direction).
+  - Prices below 29 rejected; narrow price search zone next to each journey.
 """
 
 import json
@@ -164,10 +168,9 @@ def extract_min_price_from_text(text: str, window: dict, direction: str):
 
 # ---------------------------------------------------------------- scraping
 
-def scrape_leg(page, origin_code, dest_code, d: date, window: dict, label: str, direction: str):
-    url = CONFIG["search_url_template"].format(
-        origin=origin_code, destination=dest_code, date=d.isoformat()
-    )
+def scrape_page(page, url: str, d: date, window: dict, label: str, direction: str):
+    """Load one search results page (outbound or return leg of a round trip)
+    and extract the cheapest fare within the time window."""
     captured = []
 
     def on_response(resp):
@@ -215,34 +218,46 @@ def main():
     fridays = upcoming_fridays(CONFIG["weeks_ahead"])
     history = json.loads(HISTORY_PATH.read_text()) if HISTORY_PATH.exists() else {}
     now = datetime.now(timezone.utc).isoformat(timespec="minutes")
+    tmpl = CONFIG["roundtrip_url_template"]
 
-    legs = []
+    # Each weekend = two round trips (one starting from each city).
+    # Each round trip = two pages: outbound results + return results
+    # (same URL with "&direction=inbound").
+    tasks = []
     for fri in fridays:
         sun = fri + timedelta(days=2)
-        legs.append(("LDN-PAR", fri, CONFIG["legs"]["friday_evening"]))
-        legs.append(("PAR-LDN", sun, CONFIG["legs"]["sunday_return"]))
-        legs.append(("PAR-LDN", fri, CONFIG["legs"]["friday_evening"]))
-        legs.append(("LDN-PAR", sun, CONFIG["legs"]["sunday_return"]))
-
-    seen, unique_legs = set(), []
-    for direction, d, window in legs:
-        key = (direction, d.isoformat(), window["earliest"])
-        if key not in seen:
-            seen.add(key)
-            unique_legs.append((direction, d, window))
+        for out_dir in ("LDN-PAR", "PAR-LDN"):
+            o, dst = out_dir.split("-")
+            back_dir = f"{dst}-{o}"
+            base_url = tmpl.format(
+                origin=stations[o]["code"],
+                destination=stations[dst]["code"],
+                outbound=fri.isoformat(),
+                inbound=sun.isoformat(),
+            )
+            tasks.append({
+                "url": base_url,
+                "direction": out_dir,
+                "date": fri,
+                "window": CONFIG["legs"]["friday_evening"],
+            })
+            tasks.append({
+                "url": base_url + "&direction=inbound",
+                "direction": back_dir,
+                "date": sun,
+                "window": CONFIG["legs"]["sunday_return"],
+            })
 
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         ctx = browser.new_context(user_agent=UA, locale="en-GB",
                                   viewport={"width": 1366, "height": 900})
         page = ctx.new_page()
-        for direction, d, window in unique_legs:
-            o, dst = direction.split("-")
-            label = f"{direction}_{window['earliest']}"
-            res = scrape_leg(page, stations[o]["code"], stations[dst]["code"],
-                             d, window, label, direction)
+        for t in tasks:
+            label = f"{t['direction']}_{t['window']['earliest']}"
+            res = scrape_page(page, t["url"], t["date"], t["window"], label, t["direction"])
             if res:
-                key = f"{d.isoformat()}_{direction}_{window['earliest']}"
+                key = f"{t['date'].isoformat()}_{t['direction']}_{t['window']['earliest']}"
                 history.setdefault(key, []).append(
                     {"ts": now, "price": res["price"], "dep": res["dep"]}
                 )
