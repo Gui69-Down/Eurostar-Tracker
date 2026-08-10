@@ -1,20 +1,18 @@
 """
-Eurostar weekend price tracker — v8
+Eurostar weekend price tracker — v9
 -----------------------------------
-Changes vs v7:
-  - The fare text ("Départ de: 07:06, Eurostar Standard, ...") is NOT an
-    aria-label attribute — CSS [aria-label*=...] selectors matched nothing,
-    so the fare was never selected ("Aucun train choisi" persisted).
-  - v8 selects the fare via a ladder of strategies based on ACCESSIBLE NAME
-    and rendered text (get_by_role / :has-text / clicking the price element),
-    then VERIFIES selection by checking that "Aucun train choisi" disappears
-    or the basket total changes, before pressing "Suivant".
-  - Step telemetry: the log prints which strategy selected the fare and
-    whether "Suivant" was clicked, so failures are diagnosable from the log
-    alone without pulling debug dumps.
+Changes vs v8:
+  - Fixed departure-time mislabelling: the price search window after a
+    departure/arrival pair could overrun into the NEXT journey card when the
+    current card had no matching price nearby (sold-out class, upsell badge),
+    attributing the next train's price to the wrong departure time (prices
+    were correct, labels sometimes off by one card).
+  - The search window is now truncated at the next time occurrence on the
+    page, so a price can only be attributed to the card it belongs to.
+Kept from v8:
+  - Ladder of verified fare-selection strategies + step telemetry.
 Kept from v7:
-  - Return page verified via "(voyage retour)" before extraction; wrong page
-    -> dump and skip, never a silent wrong price.
+  - Return page verified via "(voyage retour)" before extraction.
 Kept from v6:
   - DOM-first extraction; JSON fallback requires a validated arrival time.
 Kept from v4/v3/v2:
@@ -151,7 +149,9 @@ def extract_min_price_from_json(payloads: list, window: dict, direction: str):
 def extract_min_price_from_text(text: str, window: dict, direction: str):
     """A time only counts as a departure if the NEXT time on the page sits
     close after it and forms a plausible departure/arrival pair for this
-    direction. The price is then searched just after the arrival time."""
+    direction. The price is searched just after the arrival time, but never
+    beyond the next time on the page — so a price can only be attributed to
+    the journey card it belongs to."""
     best = None
     times = [(m.start(), f"{int(m.group(1)):02d}:{m.group(2)}")
              for m in TIME_RE.finditer(text)]
@@ -165,7 +165,10 @@ def extract_min_price_from_text(text: str, window: dict, direction: str):
             continue
         if not _plausible_pair(dep, arr, direction):
             continue
-        chunk = text[pos2: pos2 + 160]     # price sits just after the time pair
+        chunk_end = pos2 + 160             # price sits just after the time pair...
+        if i + 2 < len(times):
+            chunk_end = min(chunk_end, times[i + 2][0])   # ...but never past the next card
+        chunk = text[pos2: chunk_end]
         pm = PRICE_RE.search(chunk)
         if pm:
             price = _price_from_match(pm)
