@@ -1,7 +1,12 @@
 """
-Eurostar weekend price tracker — v2
+Eurostar weekend price tracker — v3
 -----------------------------------
-Changes vs v1:
+Changes vs v2:
+  - PRICE_RE now matches prices in BOTH symbol-first ("£39", "€39.00") and
+    French symbol-last ("234 €", "39,00 €") formats. The fr-fr market renders
+    prices symbol-last, which made v2's DOM fallback match nothing at all.
+  - Price extraction reads whichever regex group matched.
+Changes vs v1 (kept from v2):
   - A time is only accepted as a DEPARTURE if it is immediately followed by a
     second time whose displayed gap matches the real journey duration
     (~2h20 travel, +1h timezone towards Paris, -1h towards London).
@@ -28,7 +33,12 @@ DEBUG_DIR = ROOT / "data" / "debug"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
      "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 
-PRICE_RE = re.compile(r"[£€]\s?(\d{1,3}(?:[.,]\d{2})?)")
+# Matches "£39", "€39.00" (symbol first) AND "234 €", "39,00 €" (symbol last,
+# as rendered on the fr-fr market — \s also covers the non-breaking space).
+PRICE_RE = re.compile(
+    r"(?:[£€]\s*(\d{1,3}(?:[.,]\d{2})?)"
+    r"|(\d{1,3}(?:[.,]\d{2})?)\s*[£€])"
+)
 TIME_RE = re.compile(r"\b([01]?\d|2[0-3]):([0-5]\d)\b")
 
 PRICE_MIN, PRICE_MAX = 29, 500
@@ -66,6 +76,11 @@ def _plausible_pair(dep: str, arr: str, direction: str) -> bool:
     lo, hi = DISPLAY_GAP[direction]
     gap = (_to_min(arr) - _to_min(dep)) % (24 * 60)
     return lo <= gap <= hi
+
+
+def _price_from_match(pm) -> float:
+    raw = pm.group(1) or pm.group(2)
+    return float(raw.replace(",", "."))
 
 
 def extract_min_price_from_json(payloads: list, window: dict, direction: str):
@@ -141,7 +156,7 @@ def extract_min_price_from_text(text: str, window: dict, direction: str):
         chunk = text[pos2: pos2 + 160]     # price sits just after the time pair
         pm = PRICE_RE.search(chunk)
         if pm:
-            price = float(pm.group(1).replace(",", "."))
+            price = _price_from_match(pm)
             if PRICE_MIN <= price < PRICE_MAX and (best is None or price < best["price"]):
                 best = {"price": price, "dep": dep, "source": "dom"}
     return best
