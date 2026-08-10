@@ -1,22 +1,23 @@
 """
-Eurostar weekend price tracker — v4
+Eurostar weekend price tracker — v5
 -----------------------------------
-Changes vs v3:
-  - Searches ROUND TRIPS instead of one-ways. Eurostar prices the same leg
-    differently depending on search type, and since the real use case is a
-    Fri->Sun weekend return, we now query with both outbound and inbound
-    dates so tracked prices match what you'd actually pay.
-  - Each weekend produces two trips (LDN->PAR->LDN and PAR->LDN->PAR), and
-    each trip is scraped twice: once for the outbound page, once for the
-    return page (same URL + "&direction=inbound").
-  - config.json must now contain "roundtrip_url_template", e.g.:
-      "https://www.eurostar.com/search/fr-fr?adult=1&origin={origin}&destination={destination}&outbound={outbound}&inbound={inbound}"
+Changes vs v4:
+  - The "&direction=inbound" URL proved unreliable headless: without an
+    outbound train selected, Eurostar sometimes re-renders the OUTBOUND
+    results, so the return leg duplicated the outbound price/time.
+  - v5 follows the real booking funnel instead: load the outbound results,
+    extract the outbound fare, then CLICK a Standard fare to advance to the
+    "Voyage retour" page, and extract the return fare from that page.
+  - Direction-aware arrival validation (kept from v2) doubles as a guard:
+    if the return page ever shows outbound trains again, their time gaps
+    fail the reversed-direction check and the leg is dumped for debugging
+    instead of recording a wrong price.
+Kept from v4:
+  - Round-trip searches via config "roundtrip_url_template".
 Kept from v3:
   - PRICE_RE matches both "£39"/"€39.00" and French "234 €"/"39,00 €".
 Kept from v2:
-  - Departure times validated by pairing with a plausible arrival time
-    (travel duration +/- timezone shift per direction).
-  - Prices below 29 rejected; narrow price search zone next to each journey.
+  - Departure/arrival pairing validation; prices below 29 rejected.
 """
 
 import json
@@ -168,9 +169,40 @@ def extract_min_price_from_text(text: str, window: dict, direction: str):
 
 # ---------------------------------------------------------------- scraping
 
-def scrape_page(page, url: str, d: date, window: dict, label: str, direction: str):
-    """Load one search results page (outbound or return leg of a round trip)
-    and extract the cheapest fare within the time window."""
+def _extract_current(page, captured, d, window, label, direction):
+    """Extract the cheapest in-window fare from whatever the page shows now."""
+    result = extract_min_price_from_json(captured, window, direction)
+    if result is None:
+        body = page.inner_text("body")
+        result = extract_min_price_from_text(body, window, direction)
+    if result is None:
+        DEBUG_DIR.mkdir(parents=True, exist_ok=True)
+        (DEBUG_DIR / f"{label}_{d.isoformat()}.txt").write_text(
+            page.inner_text("body")[:20000]
+        )
+        print(f"  !! no price found for {label} {d} (debug dump saved)")
+    else:
+        print(f"  {label} {d}: {result['price']} at {result['dep']} ({result['source']})")
+    return result
+
+
+def _dismiss_popups(page):
+    """Best-effort dismissal of cookie banners and upsell modals."""
+    for sel in ("#onetrust-accept-btn-handler",
+                "button:has-text('Accepter')",
+                "button:has-text('Accept')",
+                "button:has-text('Non merci')",
+                "button:has-text('No thanks')",
+                "button:has-text('Continuer sans')"):
+        try:
+            page.locator(sel).first.click(timeout=1500)
+        except Exception:
+            continue
+
+
+def scrape_trip(page, trip):
+    """One round trip = outbound results page, then click a Standard fare to
+    advance the funnel to the return results page, extract both."""
     captured = []
 
     def on_response(resp):
@@ -184,31 +216,43 @@ def scrape_page(page, url: str, d: date, window: dict, label: str, direction: st
         except Exception:
             pass
 
+    out_res = ret_res = None
     page.on("response", on_response)
     try:
-        page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        for sel in ("#onetrust-accept-btn-handler",
-                    "button:has-text('Accept')",
-                    "button:has-text('Accepter')"):
+        # ---- outbound leg
+        page.goto(trip["url"], wait_until="domcontentloaded", timeout=60000)
+        _dismiss_popups(page)
+        page.wait_for_timeout(9000)
+        out_label = f"{trip['out_dir']}_{trip['out_window']['earliest']}"
+        out_res = _extract_current(page, captured, trip["out_date"],
+                                   trip["out_window"], out_label, trip["out_dir"])
+
+        # ---- advance to return leg: click the first Standard fare
+        captured.clear()
+        clicked = False
+        for sel in ('[aria-label*="Eurostar Standard"]',
+                    'button:has-text("Eurostar Standard")'):
             try:
-                page.locator(sel).first.click(timeout=2500)
+                page.locator(sel).first.click(timeout=6000)
+                clicked = True
                 break
             except Exception:
                 continue
-        page.wait_for_timeout(9000)
-        result = extract_min_price_from_json(captured, window, direction)
-        if result is None:
-            body = page.inner_text("body")
-            result = extract_min_price_from_text(body, window, direction)
-        if result is None:
+        ret_label = f"{trip['ret_dir']}_{trip['ret_window']['earliest']}_RET"
+        if not clicked:
             DEBUG_DIR.mkdir(parents=True, exist_ok=True)
-            (DEBUG_DIR / f"{label}_{d.isoformat()}.txt").write_text(
+            (DEBUG_DIR / f"{ret_label}_{trip['ret_date'].isoformat()}_noclick.txt").write_text(
                 page.inner_text("body")[:20000]
             )
-            print(f"  !! no price found for {label} {d} (debug dump saved)")
-        else:
-            print(f"  {label} {d}: {result['price']} at {result['dep']} ({result['source']})")
-        return result
+            print(f"  !! could not open return page for {ret_label} "
+                  f"{trip['ret_date']} (debug dump saved)")
+            return out_res, None
+
+        _dismiss_popups(page)
+        page.wait_for_timeout(9000)
+        ret_res = _extract_current(page, captured, trip["ret_date"],
+                                   trip["ret_window"], ret_label, trip["ret_dir"])
+        return out_res, ret_res
     finally:
         page.remove_listener("response", on_response)
 
@@ -220,32 +264,24 @@ def main():
     now = datetime.now(timezone.utc).isoformat(timespec="minutes")
     tmpl = CONFIG["roundtrip_url_template"]
 
-    # Each weekend = two round trips (one starting from each city).
-    # Each round trip = two pages: outbound results + return results
-    # (same URL with "&direction=inbound").
-    tasks = []
+    trips = []
     for fri in fridays:
         sun = fri + timedelta(days=2)
         for out_dir in ("LDN-PAR", "PAR-LDN"):
             o, dst = out_dir.split("-")
-            back_dir = f"{dst}-{o}"
-            base_url = tmpl.format(
-                origin=stations[o]["code"],
-                destination=stations[dst]["code"],
-                outbound=fri.isoformat(),
-                inbound=sun.isoformat(),
-            )
-            tasks.append({
-                "url": base_url,
-                "direction": out_dir,
-                "date": fri,
-                "window": CONFIG["legs"]["friday_evening"],
-            })
-            tasks.append({
-                "url": base_url + "&direction=inbound",
-                "direction": back_dir,
-                "date": sun,
-                "window": CONFIG["legs"]["sunday_return"],
+            trips.append({
+                "url": tmpl.format(
+                    origin=stations[o]["code"],
+                    destination=stations[dst]["code"],
+                    outbound=fri.isoformat(),
+                    inbound=sun.isoformat(),
+                ),
+                "out_dir": out_dir,
+                "out_date": fri,
+                "out_window": CONFIG["legs"]["friday_evening"],
+                "ret_dir": f"{dst}-{o}",
+                "ret_date": sun,
+                "ret_window": CONFIG["legs"]["sunday_return"],
             })
 
     with sync_playwright() as pw:
@@ -253,13 +289,19 @@ def main():
         ctx = browser.new_context(user_agent=UA, locale="en-GB",
                                   viewport={"width": 1366, "height": 900})
         page = ctx.new_page()
-        for t in tasks:
-            label = f"{t['direction']}_{t['window']['earliest']}"
-            res = scrape_page(page, t["url"], t["date"], t["window"], label, t["direction"])
-            if res:
-                key = f"{t['date'].isoformat()}_{t['direction']}_{t['window']['earliest']}"
+        for trip in trips:
+            out_res, ret_res = scrape_trip(page, trip)
+            if out_res:
+                key = (f"{trip['out_date'].isoformat()}_{trip['out_dir']}"
+                       f"_{trip['out_window']['earliest']}")
                 history.setdefault(key, []).append(
-                    {"ts": now, "price": res["price"], "dep": res["dep"]}
+                    {"ts": now, "price": out_res["price"], "dep": out_res["dep"]}
+                )
+            if ret_res:
+                key = (f"{trip['ret_date'].isoformat()}_{trip['ret_dir']}"
+                       f"_{trip['ret_window']['earliest']}")
+                history.setdefault(key, []).append(
+                    {"ts": now, "price": ret_res["price"], "dep": ret_res["dep"]}
                 )
             time.sleep(random.uniform(4, 9))
         browser.close()
