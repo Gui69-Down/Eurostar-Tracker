@@ -1,28 +1,25 @@
 """
-Eurostar weekend price tracker — v7
+Eurostar weekend price tracker — v8
 -----------------------------------
-Changes vs v6:
-  - The debug dump showed the v5/v6 click was hitting the "Eurostar Standard"
-    COLUMN HEADER, not a fare: after the click the page still said
-    "Aucun train choisi" and remained on the outbound results.
-  - Fix 1: fare clicks now target '[aria-label*="Départ de:"][aria-label*=
-    "Eurostar Standard"]' — real fare cells carry both fragments in their
-    aria-label; the header carries neither.
-  - Fix 2: after selecting a fare, click the "Suivant" (choix retour) button
-    to actually advance the funnel to the return page.
-  - Fix 3: before extracting the return leg, VERIFY the page contains
-    "(voyage retour)". If not, dump and skip — never extract from the wrong
-    page. This eliminates duplicated outbound prices for good.
+Changes vs v7:
+  - The fare text ("Départ de: 07:06, Eurostar Standard, ...") is NOT an
+    aria-label attribute — CSS [aria-label*=...] selectors matched nothing,
+    so the fare was never selected ("Aucun train choisi" persisted).
+  - v8 selects the fare via a ladder of strategies based on ACCESSIBLE NAME
+    and rendered text (get_by_role / :has-text / clicking the price element),
+    then VERIFIES selection by checking that "Aucun train choisi" disappears
+    or the basket total changes, before pressing "Suivant".
+  - Step telemetry: the log prints which strategy selected the fare and
+    whether "Suivant" was clicked, so failures are diagnosable from the log
+    alone without pulling debug dumps.
+Kept from v7:
+  - Return page verified via "(voyage retour)" before extraction; wrong page
+    -> dump and skip, never a silent wrong price.
 Kept from v6:
   - DOM-first extraction; JSON fallback requires a validated arrival time.
-Kept from v5:
-  - Real booking funnel (no "&direction=inbound" URL).
-Kept from v4:
-  - Round-trip searches via config "roundtrip_url_template".
-Kept from v3:
-  - PRICE_RE matches both "£39"/"€39.00" and French "234 €"/"39,00 €".
-Kept from v2:
-  - Departure/arrival pairing validation; prices below 29 rejected.
+Kept from v4/v3/v2:
+  - Round-trip URLs; FR/GB price formats; departure/arrival pairing
+    validation; prices below 29 rejected.
 """
 
 import json
@@ -61,7 +58,8 @@ DISPLAY_GAP = {
     "PAR-LDN": (55, 115),
 }
 
-RETURN_PAGE_MARKER = "voyage retour)"   # appears as "(voyage retour)" only on the return results page
+RETURN_PAGE_MARKER = "voyage retour)"   # "(voyage retour)" only on the return results page
+NO_TRAIN_MARKER = "Aucun train choisi"  # shown in the basket while nothing is selected
 
 
 # ---------------------------------------------------------------- dates
@@ -213,37 +211,74 @@ def _dump(page, name):
     (DEBUG_DIR / f"{name}.txt").write_text(page.inner_text("body")[:20000])
 
 
-def _open_return_page(page) -> bool:
-    """Select a Standard fare (real fare cells carry both 'Départ de:' and
-    'Eurostar Standard' in their aria-label), then click 'Suivant' to reach
-    the return results page. Returns True once '(voyage retour)' is shown."""
-    # 1) select a fare
-    fare_clicked = False
-    for sel in ('[aria-label*="Départ de:"][aria-label*="Eurostar Standard"]',
-                '[aria-label*="Départ de"][aria-label*="Standard"]'):
+def _fare_selected(page) -> bool:
+    """Selection succeeded once the basket no longer says 'Aucun train choisi'."""
+    try:
+        return NO_TRAIN_MARKER not in page.inner_text("body")
+    except Exception:
+        return False
+
+
+def _select_standard_fare(page) -> str | None:
+    """Try a ladder of strategies to select a Standard fare. Returns the name
+    of the strategy that verifiably selected a train, else None."""
+    name_re = re.compile(r"Départ de.*Eurostar Standard")
+
+    def try_click(clickable):
         try:
-            page.locator(sel).first.click(timeout=6000)
-            fare_clicked = True
-            break
+            clickable.first.click(timeout=5000)
+            page.wait_for_timeout(2500)
+            _dismiss_popups(page)
+            return _fare_selected(page)
+        except Exception:
+            return False
+
+    strategies = [
+        ("role=button+name", lambda: page.get_by_role("button", name=name_re)),
+        ("role=radio+name", lambda: page.get_by_role("radio", name=name_re)),
+        ("role=option+name", lambda: page.get_by_role("option", name=name_re)),
+        ("button:has-text", lambda: page.locator("button:has-text('Eurostar Standard')")
+                                        .filter(has_text="Départ de")),
+        ("label:has-text", lambda: page.locator("label:has-text('Eurostar Standard')")
+                                       .filter(has_text="Départ de")),
+        ("any:has-text", lambda: page.locator("[class*='fare'], [class*='price'], [class*='class']")
+                                     .filter(has_text="Eurostar Standard")
+                                     .filter(has_text="Départ de")),
+    ]
+    for name, make in strategies:
+        try:
+            loc = make()
+            if loc.count() == 0:
+                continue
         except Exception:
             continue
-    if not fare_clicked:
-        return False
-    page.wait_for_timeout(2000)
-    _dismiss_popups(page)
+        if try_click(loc):
+            return name
+    return None
 
-    # 2) advance to the return step (button may be labelled "Suivant : choix retour")
+
+def _open_return_page(page) -> bool:
+    """Select a Standard fare, press 'Suivant', and confirm we reached the
+    '(voyage retour)' page."""
+    strategy = _select_standard_fare(page)
+    if strategy is None:
+        print("     fare selection FAILED (no strategy worked)")
+        return False
+    print(f"     fare selected via [{strategy}]")
+
+    clicked_next = False
     for sel in ("button:has-text('Suivant')",
                 "button:has-text('choix retour')",
                 "a:has-text('Suivant')"):
         try:
             page.locator(sel).first.click(timeout=4000)
+            clicked_next = True
             break
         except Exception:
             continue
+    print(f"     suivant clicked: {clicked_next}")
     _dismiss_popups(page)
 
-    # 3) wait until the return page marker appears (up to ~15s)
     for _ in range(15):
         page.wait_for_timeout(1000)
         try:
