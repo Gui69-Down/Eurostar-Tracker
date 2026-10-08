@@ -5,9 +5,9 @@ Londres St Pancras Int'l
 
 Paris Gare du Nord
 
-ven. 9 oct.
+ven. 27 nov.
 à
- - dim. 11 oct.
+ - dim. 29 nov.
 
 1 adulte
 
@@ -18,26 +18,26 @@ Options
 Paiement
 ParisLondres
 (voyage retour)
-ven. 9 oct.
-vendredi 9 octobre
+ven. 27 nov.
+vendredi 27 novembre
 -
-195 €
-sam. 10 oct.
-samedi 10 octobre
+63 €
+sam. 28 nov.
+samedi 28 novembre
 -
-218 €
-dim. 11 oct.
-dimanche 11 octobre
--
-195 €
-lun. 12 oct.
-lundi 12 octobre
--
-195 €
-mar. 13 oct.
-mardi 13 octobre
+74 €
+dim. 29 nov.
+dimanche 29 novembre
 -
 126 €
+lun. 30 nov.
+lundi 30 novembre
+-
+74 €
+mar. 1 déc.
+mardi 1 décembre
+-
+44 €
 Eurostar Standard
 Eurostar Plus
 Eurostar Premier
@@ -50,32 +50,30 @@ Votre voyage
 Départ de:
 08:53
 Arrivée à:
-10:30
+10:50
 Durée totale:
 
 2 h
 heures
- 37 min
+ 57 min
 minutes
 
 Direct
 
-195 €
+126 €
 
 Meilleur tarif
-,  Départ de: 08:53, Eurostar Standard, 2 heures 37 minutes, Direct
+,  Départ de: 08:53, Eurostar Standard, 2 heures 57 minutes, Direct
++12 €
+Surclassez-vous en Eurostar Plus pour +12 €
 
-310 €
+138 €
 
-9 places restantes
-,  Départ de: 08:53, Eurostar Plus, 2 heures 37 minutes, Direct
-+6 €
-Surclassez-vous en Eurostar Premier pour +6 €
+,  Départ de: 08:53, Eurostar Plus, 2 heures 57 minutes, Direct
 
 316 €
 
-27 places restantes
-,  Départ de: 08:53, Eurostar Premier, 2 heures 37 minutes, Direct
+,  Départ de: 08:53, Eurostar Premier, 2 heures 57 minutes, Direct
 Votre voyage
 Départ de:
 10:00
@@ -90,21 +88,17 @@ minutes
 
 Direct
 
-195 €
+126 €
 
 Meilleur tarif
 ,  Départ de: 10:00, Eurostar Standard, 2 heures 30 minutes, Direct
 
-310 €
+161 €
 
-14 places restantes
 ,  Départ de: 10:00, Eurostar Plus, 2 heures 30 minutes, Direct
-+23 €
-Surclassez-vous en Eurostar Premier pour +23 €
 
-333 €
+316 €
 
-26 places restantes
 ,  Départ de: 10:00, Eurostar Premier, 2 heures 30 minutes, Direct
 Votre voyage
 Départ de:
@@ -120,18 +114,16 @@ minutes
 
 Direct
 
-218 €
+149 €
 
 ,  Départ de: 11:02, Eurostar Standard, 2 heures 28 minutes, Direct
 
-310 €
+184 €
 
-11 places restantes
 ,  Départ de: 11:02, Eurostar Plus, 2 heures 28 minutes, Direct
 
-391 €
+316 €
 
-22 places restantes
 ,  Départ de: 11:02, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:
@@ -146,11 +138,17 @@ heures
 minutes
 
 Direct
-Non disponible
+
+172 €
+
 ,  Départ de: 12:04, Eurostar Standard, 2 heures 26 minutes, Direct
-Non disponible
+
+253 €
+
 ,  Départ de: 12:04, Eurostar Plus, 2 heures 26 minutes, Direct
-Non disponible
+
+333 €
+
 ,  Départ de: 12:04, Eurostar Premier, 2 heures 26 minutes, Direct
 Votre voyage
 Départ de:
@@ -165,14 +163,17 @@ heures
 minutes
 
 Direct
-Non disponible
+
+172 €
+
 ,  Départ de: 13:33, Eurostar Standard, 2 heures 27 minutes, Direct
-Non disponible
+
+276 €
+
 ,  Départ de: 13:33, Eurostar Plus, 2 heures 27 minutes, Direct
 
-448 €
+316 €
 
-Dernière place
 ,  Départ de: 13:33, Eurostar Premier, 2 heures 27 minutes, Direct
 Votre voyage
 Départ de:
@@ -187,11 +188,17 @@ heures
 minutes
 
 Direct
-Non disponible
+
+195 €
+
 ,  Départ de: 15:01, Eurostar Standard, 2 heures 26 minutes, Direct
-Non disponible
+
+276 €
+
 ,  Départ de: 15:01, Eurostar Plus, 2 heures 26 minutes, Direct
-Non disponible
+
+333 €
+
 ,  Départ de: 15:01, Eurostar Premier, 2 heures 26 minutes, Direct
 Votre voyage
 Départ de:
@@ -206,11 +213,19 @@ heures
 minutes
 
 Direct
-Non disponible
+
+218 €
+
 ,  Départ de: 17:02, Eurostar Standard, 2 heures 28 minutes, Direct
-Non disponible
+
+310 €
+
 ,  Départ de: 17:02, Eurostar Plus, 2 heures 28 minutes, Direct
-Non disponible
++23 €
+Surclassez-vous en Eurostar Premier pour +23 €
+
+333 €
+
 ,  Départ de: 17:02, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:
@@ -226,13 +241,16 @@ minutes
 
 Direct
 
-287 €
+218 €
 
-Dernière place
 ,  Départ de: 18:19, Eurostar Standard, 2 heures 41 minutes, Direct
-Non disponible
+
+276 €
+
 ,  Départ de: 18:19, Eurostar Plus, 2 heures 41 minutes, Direct
-Non disponible
+
+316 €
+
 ,  Départ de: 18:19, Eurostar Premier, 2 heures 41 minutes, Direct
 Votre voyage
 Départ de:
@@ -249,40 +267,23 @@ minutes
 Direct
 Non disponible
 ,  Départ de: 20:00, Eurostar Standard, 2 heures 30 minutes, Direct
-Non disponible
+
+276 €
+
 ,  Départ de: 20:00, Eurostar Plus, 2 heures 30 minutes, Direct
-Non disponible
+
+316 €
+
 ,  Départ de: 20:00, Eurostar Premier, 2 heures 30 minutes, Direct
-Votre voyage
-Départ de:
-20:58
-Arrivée à:
-22:30
-Durée totale:
-
-2 h
-heures
- 32 min
-minutes
-
-Direct
-Non disponible
-,  Départ de: 20:58, Eurostar Standard, 2 heures 32 minutes, Direct
-
-345 €
-
-Dernière place
-,  Départ de: 20:58, Eurostar Plus, 2 heures 32 minutes, Direct
-Non disponible
-,  Départ de: 20:58, Eurostar Premier, 2 heures 32 minutes, Direct
 Aperçu du voyage
-253,00 €
+126,00 €
 Continuer
 Aller
 Modifier
-ven. 9 oct.
-vendredi 9 octobre
-1 x adulte	253,00 €
+ven. 27 nov.
+vendredi 27 novembre
+1 x adulte	126,00 €
+Surclassez-vous en Eurostar Plus pour +12 €
 Détail de votre voyage
 
 06:01 - Londres St Pancras Int'l
@@ -290,7 +291,7 @@ Détail de votre voyage
 Durée totale:
 (2 h
 heures
- 25 min
+ 28 min
 minutes
 )
 Eurostar Standard
@@ -301,7 +302,7 @@ Boissons, repas et snacks disponibles à bord
 Wi-fi gratuit à bord
 Prises européennes et britanniques
 
-09:26 - Paris Gare du Nord
+09:29 - Paris Gare du Nord
 
 Conditions tarifaires
 Retour
