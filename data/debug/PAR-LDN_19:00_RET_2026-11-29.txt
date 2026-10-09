@@ -21,7 +21,7 @@ ParisLondres
 ven. 27 nov.
 vendredi 27 novembre
 -
-63 €
+74 €
 sam. 28 nov.
 samedi 28 novembre
 -
@@ -144,7 +144,7 @@ Direct
 
 ,  Départ de: 12:04, Eurostar Standard, 2 heures 26 minutes, Direct
 
-253 €
+276 €
 
 ,  Départ de: 12:04, Eurostar Plus, 2 heures 26 minutes, Direct
 
@@ -190,7 +190,7 @@ minutes
 
 Direct
 
-218 €
+195 €
 
 ,  Départ de: 15:01, Eurostar Standard, 2 heures 26 minutes, Direct
 
