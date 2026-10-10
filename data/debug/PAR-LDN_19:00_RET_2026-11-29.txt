@@ -37,7 +37,7 @@ lundi 30 novembre
 mar. 1 déc.
 mardi 1 décembre
 -
-44 €
+50 €
 Eurostar Standard
 Eurostar Plus
 Eurostar Premier
@@ -115,9 +115,11 @@ minutes
 
 Direct
 
-149 €
+172 €
 
 ,  Départ de: 11:02, Eurostar Standard, 2 heures 28 minutes, Direct
++12 €
+Surclassez-vous en Eurostar Plus pour +12 €
 
 184 €
 
@@ -144,7 +146,7 @@ Direct
 
 ,  Départ de: 12:04, Eurostar Standard, 2 heures 26 minutes, Direct
 
-276 €
+253 €
 
 ,  Départ de: 12:04, Eurostar Plus, 2 heures 26 minutes, Direct
 
