@@ -29,15 +29,15 @@ jeudi 15 octobre
 ven. 16 oct.
 vendredi 16 octobre
 -
-215 €
+165 €
 sam. 17 oct.
 samedi 17 octobre
 -
-215 €
+250 €
 dim. 18 oct.
 dimanche 18 octobre
 -
-215 €
+250 €
 Eurostar Standard
 Eurostar Plus
 Eurostar Premier
@@ -60,20 +60,18 @@ minutes
 
 Direct
 
-215 €
+165 €
 
 Meilleur tarif
 ,  Départ de: 07:06, Eurostar Standard, 2 heures 24 minutes, Direct
-+15 €
-Surclassez-vous en Eurostar Plus pour +15 €
 
-230 €
+205 €
 
 ,  Départ de: 07:06, Eurostar Plus, 2 heures 24 minutes, Direct
 
 325 €
 
-18 places restantes
+12 places restantes
 ,  Départ de: 07:06, Eurostar Premier, 2 heures 24 minutes, Direct
 Votre voyage
 Départ de:
@@ -89,14 +87,12 @@ minutes
 
 Direct
 
-215 €
+165 €
 
 Meilleur tarif
 ,  Départ de: 07:35, Eurostar Standard, 2 heures 25 minutes, Direct
-+15 €
-Surclassez-vous en Eurostar Plus pour +15 €
 
-230 €
+205 €
 
 ,  Départ de: 07:35, Eurostar Plus, 2 heures 25 minutes, Direct
 
@@ -118,20 +114,18 @@ minutes
 
 Direct
 
-215 €
+165 €
 
 Meilleur tarif
 ,  Départ de: 08:36, Eurostar Standard, 2 heures 24 minutes, Direct
-+15 €
-Surclassez-vous en Eurostar Plus pour +15 €
 
-230 €
+205 €
 
 ,  Départ de: 08:36, Eurostar Plus, 2 heures 24 minutes, Direct
 
 325 €
 
-19 places restantes
+17 places restantes
 ,  Départ de: 08:36, Eurostar Premier, 2 heures 24 minutes, Direct
 Votre voyage
 Départ de:
@@ -149,12 +143,11 @@ Direct
 
 215 €
 
-Meilleur tarif
 ,  Départ de: 08:58, Eurostar Standard, 2 heures 32 minutes, Direct
 
 280 €
 
-17 places restantes
+18 places restantes
 ,  Départ de: 08:58, Eurostar Plus, 2 heures 32 minutes, Direct
 
 325 €
@@ -176,7 +169,6 @@ Direct
 
 215 €
 
-Meilleur tarif
 ,  Départ de: 10:07, Eurostar Standard, 2 heures 23 minutes, Direct
 
 310 €
@@ -205,12 +197,11 @@ Direct
 
 215 €
 
-Meilleur tarif
 ,  Départ de: 11:08, Eurostar Standard, 2 heures 22 minutes, Direct
 
 310 €
 
-16 places restantes
+14 places restantes
 ,  Départ de: 11:08, Eurostar Plus, 2 heures 22 minutes, Direct
 +15 €
 Surclassez-vous en Eurostar Premier pour +15 €
@@ -239,7 +230,7 @@ Direct
 
 310 €
 
-19 places restantes
+16 places restantes
 ,  Départ de: 12:02, Eurostar Plus, 2 heures 28 minutes, Direct
 
 350 €
@@ -259,15 +250,12 @@ heures
 minutes
 
 Direct
-
-250 €
-
-Dernière place
+Non disponible
 ,  Départ de: 12:30, Eurostar Standard, 2 heures 30 minutes, Direct
 
 310 €
 
-7 places restantes
+8 places restantes
 ,  Départ de: 12:30, Eurostar Plus, 2 heures 30 minutes, Direct
 +15 €
 Surclassez-vous en Eurostar Premier pour +15 €
@@ -288,12 +276,15 @@ heures
 minutes
 
 Direct
-Non disponible
+
+250 €
+
+Plus que 2 places
 ,  Départ de: 13:06, Eurostar Standard, 2 heures 24 minutes, Direct
 
 310 €
 
-15 places restantes
+12 places restantes
 ,  Départ de: 13:06, Eurostar Plus, 2 heures 24 minutes, Direct
 +15 €
 Surclassez-vous en Eurostar Premier pour +15 €
@@ -317,17 +308,17 @@ Direct
 
 215 €
 
-Meilleur tarif
+25 places restantes
 ,  Départ de: 14:31, Eurostar Standard, 2 heures 34 minutes, Direct
 
 310 €
 
-19 places restantes
+12 places restantes
 ,  Départ de: 14:31, Eurostar Plus, 2 heures 34 minutes, Direct
 
 350 €
 
-30 places restantes
+26 places restantes
 ,  Départ de: 14:31, Eurostar Premier, 2 heures 34 minutes, Direct
 Votre voyage
 Départ de:
@@ -345,12 +336,12 @@ Direct
 
 250 €
 
-10 places restantes
+8 places restantes
 ,  Départ de: 15:07, Eurostar Standard, 2 heures 23 minutes, Direct
 
 310 €
 
-7 places restantes
+9 places restantes
 ,  Départ de: 15:07, Eurostar Plus, 2 heures 23 minutes, Direct
 +15 €
 Surclassez-vous en Eurostar Premier pour +15 €
@@ -374,12 +365,12 @@ Direct
 
 250 €
 
-19 places restantes
+18 places restantes
 ,  Départ de: 15:55, Eurostar Standard, 2 heures 40 minutes, Direct
 
 310 €
 
-13 places restantes
+12 places restantes
 ,  Départ de: 15:55, Eurostar Plus, 2 heures 40 minutes, Direct
 +15 €
 Surclassez-vous en Eurostar Premier pour +15 €
@@ -407,12 +398,12 @@ Direct
 
 310 €
 
-6 places restantes
+Plus que 3 places
 ,  Départ de: 16:27, Eurostar Plus, 2 heures 33 minutes, Direct
 
 350 €
 
-12 places restantes
+9 places restantes
 ,  Départ de: 16:27, Eurostar Premier, 2 heures 33 minutes, Direct
 Votre voyage
 Départ de:
@@ -430,19 +421,17 @@ Direct
 
 250 €
 
-25 places restantes
+14 places restantes
 ,  Départ de: 16:47, Eurostar Standard, 2 heures 43 minutes, Direct
 
 310 €
 
-16 places restantes
+14 places restantes
 ,  Départ de: 16:47, Eurostar Plus, 2 heures 43 minutes, Direct
-+15 €
-Surclassez-vous en Eurostar Premier pour +15 €
 
-325 €
+350 €
 
-24 places restantes
+10 places restantes
 ,  Départ de: 16:47, Eurostar Premier, 2 heures 43 minutes, Direct
 Votre voyage
 Départ de:
@@ -460,19 +449,16 @@ Direct
 
 285 €
 
-4 places restantes
+Dernière place
 ,  Départ de: 17:57, Eurostar Standard, 2 heures 41 minutes, Direct
 +25 €
 Surclassez-vous en Eurostar Plus pour +25 €
 
 310 €
 
-10 places restantes
+Plus que 2 places
 ,  Départ de: 17:57, Eurostar Plus, 2 heures 41 minutes, Direct
-
-395 €
-
-Dernière place
+Non disponible
 ,  Départ de: 17:57, Eurostar Premier, 2 heures 41 minutes, Direct
 Votre voyage
 Départ de:
@@ -511,7 +497,7 @@ Non disponible
 
 310 €
 
-6 places restantes
+Dernière place
 ,  Départ de: 19:24, Eurostar Plus, 2 heures 36 minutes, Direct
 Non disponible
 ,  Départ de: 19:24, Eurostar Premier, 2 heures 36 minutes, Direct
