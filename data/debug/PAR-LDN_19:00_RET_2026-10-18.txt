@@ -21,7 +21,7 @@ ParisLondres
 ven. 16 oct.
 vendredi 16 octobre
 -
-172 €
+195 €
 sam. 17 oct.
 samedi 17 octobre
 -
@@ -29,7 +29,7 @@ samedi 17 octobre
 dim. 18 oct.
 dimanche 18 octobre
 -
-253 €
+287 €
 lun. 19 oct.
 lundi 19 octobre
 -
@@ -60,18 +60,14 @@ minutes
 
 Direct
 
-253 €
+287 €
 
 Meilleur tarif
 ,  Départ de: 08:53, Eurostar Standard, 2 heures 37 minutes, Direct
-+23 €
-Surclassez-vous en Eurostar Plus pour +23 €
-
-276 €
-
+Non disponible
 ,  Départ de: 08:53, Eurostar Plus, 2 heures 37 minutes, Direct
 
-316 €
+333 €
 
 ,  Départ de: 08:53, Eurostar Premier, 2 heures 37 minutes, Direct
 Votre voyage
@@ -90,16 +86,13 @@ Direct
 
 287 €
 
+Meilleur tarif
 ,  Départ de: 10:00, Eurostar Standard, 2 heures 30 minutes, Direct
-+23 €
-Surclassez-vous en Eurostar Plus pour +23 €
 
-310 €
+345 €
 
 7 places restantes
 ,  Départ de: 10:00, Eurostar Plus, 2 heures 30 minutes, Direct
-+23 €
-Surclassez-vous en Eurostar Premier pour +23 €
 
 333 €
 
@@ -120,20 +113,17 @@ Direct
 
 287 €
 
-18 places restantes
+Meilleur tarif
 ,  Départ de: 11:03, Eurostar Standard, 2 heures 27 minutes, Direct
-+23 €
-Surclassez-vous en Eurostar Plus pour +23 €
 
-310 €
+345 €
 
+28 places restantes
 ,  Départ de: 11:03, Eurostar Plus, 2 heures 27 minutes, Direct
-+23 €
-Surclassez-vous en Eurostar Premier pour +23 €
 
-333 €
+448 €
 
-26 places restantes
+15 places restantes
 ,  Départ de: 11:03, Eurostar Premier, 2 heures 27 minutes, Direct
 Votre voyage
 Départ de:
@@ -167,10 +157,7 @@ heures
 minutes
 
 Direct
-
-287 €
-
-Dernière place
+Non disponible
 ,  Départ de: 13:33, Eurostar Standard, 2 heures 27 minutes, Direct
 Non disponible
 ,  Départ de: 13:33, Eurostar Plus, 2 heures 27 minutes, Direct
@@ -267,10 +254,7 @@ minutes
 Direct
 Non disponible
 ,  Départ de: 20:58, Eurostar Standard, 2 heures 32 minutes, Direct
-
-345 €
-
-Dernière place
+Non disponible
 ,  Départ de: 20:58, Eurostar Plus, 2 heures 32 minutes, Direct
 Non disponible
 ,  Départ de: 20:58, Eurostar Premier, 2 heures 32 minutes, Direct
