@@ -213,15 +213,12 @@ heures
 minutes
 
 Direct
-
-287 €
-
-Plus que 3 places
+Non disponible
 ,  Départ de: 17:06, Eurostar Standard, 2 heures 24 minutes, Direct
 
 345 €
 
-Plus que 2 places
+Plus que 3 places
 ,  Départ de: 17:06, Eurostar Plus, 2 heures 24 minutes, Direct
 Non disponible
 ,  Départ de: 17:06, Eurostar Premier, 2 heures 24 minutes, Direct
@@ -241,7 +238,7 @@ Direct
 
 287 €
 
-4 places restantes
+Plus que 2 places
 ,  Départ de: 18:19, Eurostar Standard, 2 heures 41 minutes, Direct
 Non disponible
 ,  Départ de: 18:19, Eurostar Plus, 2 heures 41 minutes, Direct
