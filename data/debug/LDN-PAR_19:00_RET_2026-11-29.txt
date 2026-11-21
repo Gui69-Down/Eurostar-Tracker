@@ -21,7 +21,7 @@ LondresParis
 ven. 27 nov.
 vendredi 27 novembre
 -
-105 €
+135 €
 sam. 28 nov.
 samedi 28 novembre
 -
@@ -33,7 +33,7 @@ dimanche 29 novembre
 lun. 30 nov.
 lundi 30 novembre
 -
-135 €
+115 €
 mar. 1 déc.
 mardi 1 décembre
 -
@@ -57,6 +57,7 @@ Direct
 
 285 €
 
+27 places restantes
 ,  Départ de: 10:31, Eurostar Standard, 2 heures 27 minutes, Direct
 Non disponible
 ,  Départ de: 10:31, Eurostar Plus, 2 heures 27 minutes, Direct
@@ -104,19 +105,19 @@ Direct
 
 285 €
 
-4 places restantes
+8 places restantes
 ,  Départ de: 13:31, Eurostar Standard, 2 heures 24 minutes, Direct
 +25 €
 Surclassez-vous en Eurostar Plus pour +25 €
 
 310 €
 
-16 places restantes
+13 places restantes
 ,  Départ de: 13:31, Eurostar Plus, 2 heures 24 minutes, Direct
 
 395 €
 
-8 places restantes
+7 places restantes
 ,  Départ de: 13:31, Eurostar Premier, 2 heures 24 minutes, Direct
 Votre voyage
 Départ de:
@@ -134,7 +135,7 @@ Direct
 
 285 €
 
-8 places restantes
+Plus que 3 places
 ,  Départ de: 14:31, Eurostar Standard, 2 heures 32 minutes, Direct
 
 280 €
@@ -163,10 +164,12 @@ Non disponible
 
 310 €
 
-28 places restantes
+25 places restantes
 ,  Départ de: 15:31, Eurostar Plus, 2 heures 36 minutes, Direct
++15 €
+Surclassez-vous en Eurostar Premier pour +15 €
 
-350 €
+325 €
 
 ,  Départ de: 15:31, Eurostar Premier, 2 heures 36 minutes, Direct
 Votre voyage
@@ -182,22 +185,15 @@ heures
 minutes
 
 Direct
-
-285 €
-
-Plus que 2 places
+Non disponible
 ,  Départ de: 16:31, Eurostar Standard, 2 heures 31 minutes, Direct
-+25 €
-Surclassez-vous en Eurostar Plus pour +25 €
 
 310 €
 
-22 places restantes
+20 places restantes
 ,  Départ de: 16:31, Eurostar Plus, 2 heures 31 minutes, Direct
-+15 €
-Surclassez-vous en Eurostar Premier pour +15 €
 
-325 €
+350 €
 
 ,  Départ de: 16:31, Eurostar Premier, 2 heures 31 minutes, Direct
 Votre voyage
@@ -218,12 +214,12 @@ Non disponible
 
 345 €
 
-16 places restantes
+13 places restantes
 ,  Départ de: 18:01, Eurostar Plus, 2 heures 28 minutes, Direct
 
 395 €
 
-16 places restantes
+15 places restantes
 ,  Départ de: 18:01, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:
@@ -243,10 +239,12 @@ Non disponible
 
 310 €
 
-9 places restantes
+6 places restantes
 ,  Départ de: 19:01, Eurostar Plus, 2 heures 31 minutes, Direct
++15 €
+Surclassez-vous en Eurostar Premier pour +15 €
 
-350 €
+325 €
 
 ,  Départ de: 19:01, Eurostar Premier, 2 heures 31 minutes, Direct
 Aperçu du voyage
