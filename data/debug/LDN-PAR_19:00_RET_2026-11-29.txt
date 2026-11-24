@@ -25,7 +25,7 @@ vendredi 27 novembre
 sam. 28 nov.
 samedi 28 novembre
 -
-115 €
+135 €
 dim. 29 nov.
 dimanche 29 novembre
 -
@@ -92,7 +92,7 @@ Meilleur tarif
 
 395 €
 
-16 places restantes
+15 places restantes
 ,  Départ de: 11:31, Eurostar Premier, 2 heures 31 minutes, Direct
 Votre voyage
 Départ de:
@@ -107,8 +107,13 @@ heures
 minutes
 
 Direct
-Non disponible
+
+285 €
+
+Meilleur tarif
 ,  Départ de: 13:31, Eurostar Standard, 2 heures 24 minutes, Direct
++25 €
+Surclassez-vous en Eurostar Plus pour +25 €
 
 310 €
 
@@ -117,7 +122,7 @@ Non disponible
 
 395 €
 
-4 places restantes
+Plus que 3 places
 ,  Départ de: 13:31, Eurostar Premier, 2 heures 24 minutes, Direct
 Votre voyage
 Départ de:
@@ -163,8 +168,13 @@ heures
 minutes
 
 Direct
-Non disponible
+
+285 €
+
+Meilleur tarif
 ,  Départ de: 15:31, Eurostar Standard, 2 heures 36 minutes, Direct
++25 €
+Surclassez-vous en Eurostar Plus pour +25 €
 
 310 €
 
@@ -173,7 +183,7 @@ Non disponible
 
 350 €
 
-27 places restantes
+28 places restantes
 ,  Départ de: 15:31, Eurostar Premier, 2 heures 36 minutes, Direct
 Votre voyage
 Départ de:
@@ -203,7 +213,7 @@ Surclassez-vous en Eurostar Plus pour +25 €
 
 350 €
 
-20 places restantes
+19 places restantes
 ,  Départ de: 16:31, Eurostar Premier, 2 heures 31 minutes, Direct
 Votre voyage
 Départ de:
@@ -228,7 +238,7 @@ Non disponible
 
 395 €
 
-16 places restantes
+17 places restantes
 ,  Départ de: 18:01, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:
@@ -250,6 +260,7 @@ Non disponible
 
 350 €
 
+30 places restantes
 ,  Départ de: 19:01, Eurostar Premier, 2 heures 31 minutes, Direct
 Aperçu du voyage
 165,00 €
