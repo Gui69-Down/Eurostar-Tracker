@@ -21,19 +21,19 @@ LondresParis
 ven. 4 déc.
 vendredi 4 décembre
 -
-85 €
+95 €
 sam. 5 déc.
 samedi 5 décembre
 -
-135 €
+165 €
 dim. 6 déc.
 dimanche 6 décembre
 -
-165 €
+190 €
 lun. 7 déc.
 lundi 7 décembre
 -
-95 €
+85 €
 mar. 8 déc.
 mardi 8 décembre
 -
@@ -55,12 +55,12 @@ minutes
 
 Direct
 
-165 €
+190 €
 
 Meilleur tarif
 ,  Départ de: 08:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
-205 €
+230 €
 
 ,  Départ de: 08:01, Eurostar Plus, 2 heures 28 minutes, Direct
 
@@ -83,9 +83,10 @@ Direct
 
 190 €
 
+Meilleur tarif
 ,  Départ de: 09:31, Eurostar Standard, 2 heures 28 minutes, Direct
 
-230 €
+255 €
 
 ,  Départ de: 09:31, Eurostar Plus, 2 heures 28 minutes, Direct
 
@@ -106,13 +107,12 @@ minutes
 
 Direct
 
-190 €
+215 €
 
 ,  Départ de: 10:31, Eurostar Standard, 2 heures 27 minutes, Direct
 
-230 €
+255 €
 
-28 places restantes
 ,  Départ de: 10:31, Eurostar Plus, 2 heures 27 minutes, Direct
 
 325 €
@@ -138,14 +138,14 @@ Direct
 
 345 €
 
-13 places restantes
+10 places restantes
 ,  Départ de: 11:31, Eurostar Plus, 2 heures 31 minutes, Direct
 +5 €
 Surclassez-vous en Eurostar Premier pour +5 €
 
 350 €
 
-26 places restantes
+23 places restantes
 ,  Départ de: 11:31, Eurostar Premier, 2 heures 31 minutes, Direct
 Votre voyage
 Départ de:
@@ -160,12 +160,12 @@ heures
 minutes
 
 Direct
-
-285 €
-
-Plus que 3 places
-,  Départ de: 13:31, Eurostar Standard, 2 heures 24 minutes, Direct
 Non disponible
+,  Départ de: 13:31, Eurostar Standard, 2 heures 24 minutes, Direct
+
+310 €
+
+Plus que 2 places
 ,  Départ de: 13:31, Eurostar Plus, 2 heures 24 minutes, Direct
 
 455 €
@@ -188,19 +188,17 @@ Direct
 
 285 €
 
-23 places restantes
+20 places restantes
 ,  Départ de: 14:31, Eurostar Standard, 2 heures 32 minutes, Direct
 
 345 €
 
-20 places restantes
+18 places restantes
 ,  Départ de: 14:31, Eurostar Plus, 2 heures 32 minutes, Direct
-+5 €
-Surclassez-vous en Eurostar Premier pour +5 €
 
-350 €
+395 €
 
-25 places restantes
+7 places restantes
 ,  Départ de: 14:31, Eurostar Premier, 2 heures 32 minutes, Direct
 Votre voyage
 Départ de:
@@ -222,7 +220,7 @@ Direct
 
 345 €
 
-28 places restantes
+26 places restantes
 ,  Départ de: 15:31, Eurostar Plus, 2 heures 36 minutes, Direct
 
 395 €
@@ -244,18 +242,14 @@ Direct
 
 285 €
 
+10 places restantes
 ,  Départ de: 16:31, Eurostar Standard, 2 heures 31 minutes, Direct
-
-345 €
-
-Dernière place
+Non disponible
 ,  Départ de: 16:31, Eurostar Plus, 2 heures 31 minutes, Direct
-+5 €
-Surclassez-vous en Eurostar Premier pour +5 €
 
 350 €
 
-25 places restantes
+19 places restantes
 ,  Départ de: 16:31, Eurostar Premier, 2 heures 31 minutes, Direct
 Votre voyage
 Départ de:
@@ -273,18 +267,17 @@ Direct
 
 285 €
 
+12 places restantes
 ,  Départ de: 18:01, Eurostar Standard, 2 heures 28 minutes, Direct
 
 345 €
 
-30 places restantes
+22 places restantes
 ,  Départ de: 18:01, Eurostar Plus, 2 heures 28 minutes, Direct
-+5 €
-Surclassez-vous en Eurostar Premier pour +5 €
 
-350 €
+395 €
 
-28 places restantes
+16 places restantes
 ,  Départ de: 18:01, Eurostar Premier, 2 heures 28 minutes, Direct
 Votre voyage
 Départ de:
@@ -304,24 +297,22 @@ Non disponible
 
 345 €
 
-26 places restantes
+27 places restantes
 ,  Départ de: 19:01, Eurostar Plus, 2 heures 34 minutes, Direct
-+5 €
-Surclassez-vous en Eurostar Premier pour +5 €
 
-350 €
+395 €
 
-29 places restantes
+21 places restantes
 ,  Départ de: 19:01, Eurostar Premier, 2 heures 34 minutes, Direct
 Aperçu du voyage
-165,00 €
+135,00 €
 Continuer
 Aller
 Modifier
 ven. 4 déc.
 vendredi 4 décembre
-1 x adulte	165,00 €
-Surclassez-vous en Eurostar Plus pour +15 €
+1 x adulte	135,00 €
+Meilleur tarif
 Détail de votre voyage
 
 07:09 - Paris Gare du Nord

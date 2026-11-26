@@ -21,15 +21,15 @@ LondresParis
 ven. 27 nov.
 vendredi 27 novembre
 -
-165 €
+190 €
 sam. 28 nov.
 samedi 28 novembre
 -
-135 €
+165 €
 dim. 29 nov.
 dimanche 29 novembre
 -
-280 €
+345 €
 lun. 30 nov.
 lundi 30 novembre
 -
@@ -61,7 +61,7 @@ Non disponible
 
 350 €
 
-26 places restantes
+24 places restantes
 ,  Départ de: 10:31, Eurostar Premier, 2 heures 27 minutes, Direct
 Votre voyage
 Départ de:
@@ -76,10 +76,7 @@ heures
 minutes
 
 Direct
-
-285 €
-
-Plus que 2 places
+Non disponible
 ,  Départ de: 11:31, Eurostar Standard, 2 heures 31 minutes, Direct
 Non disponible
 ,  Départ de: 11:31, Eurostar Plus, 2 heures 31 minutes, Direct
@@ -103,10 +100,7 @@ minutes
 Direct
 Non disponible
 ,  Départ de: 13:31, Eurostar Standard, 2 heures 24 minutes, Direct
-
-280 €
-
-Meilleur tarif
+Non disponible
 ,  Départ de: 13:31, Eurostar Plus, 2 heures 24 minutes, Direct
 Non disponible
 ,  Départ de: 13:31, Eurostar Premier, 2 heures 24 minutes, Direct
@@ -125,10 +119,7 @@ minutes
 Direct
 Non disponible
 ,  Départ de: 14:31, Eurostar Standard, 2 heures 32 minutes, Direct
-
-280 €
-
-Meilleur tarif
+Non disponible
 ,  Départ de: 14:31, Eurostar Plus, 2 heures 32 minutes, Direct
 
 395 €
@@ -152,7 +143,7 @@ Non disponible
 
 345 €
 
-16 places restantes
+Meilleur tarif
 ,  Départ de: 15:31, Eurostar Plus, 2 heures 36 minutes, Direct
 
 395 €
@@ -177,12 +168,12 @@ Non disponible
 
 345 €
 
-Plus que 3 places
+Meilleur tarif
 ,  Départ de: 16:31, Eurostar Plus, 2 heures 31 minutes, Direct
 
 395 €
 
-8 places restantes
+7 places restantes
 ,  Départ de: 16:31, Eurostar Premier, 2 heures 31 minutes, Direct
 Votre voyage
 Départ de:
@@ -199,10 +190,7 @@ minutes
 Direct
 Non disponible
 ,  Départ de: 18:01, Eurostar Standard, 2 heures 28 minutes, Direct
-
-345 €
-
-Plus que 2 places
+Non disponible
 ,  Départ de: 18:01, Eurostar Plus, 2 heures 28 minutes, Direct
 
 395 €
@@ -224,25 +212,23 @@ minutes
 Direct
 Non disponible
 ,  Départ de: 19:01, Eurostar Standard, 2 heures 31 minutes, Direct
-
-310 €
-
-Dernière place
+Non disponible
 ,  Départ de: 19:01, Eurostar Plus, 2 heures 31 minutes, Direct
 
-350 €
+395 €
 
-9 places restantes
+7 places restantes
 ,  Départ de: 19:01, Eurostar Premier, 2 heures 31 minutes, Direct
 Aperçu du voyage
-215,00 €
+250,00 €
 Continuer
 Aller
 Modifier
 ven. 27 nov.
 vendredi 27 novembre
-1 x adulte	215,00 €
+1 x adulte	250,00 €
 Dispo. limitée
+Surclassez-vous en Eurostar Plus pour +30 €
 Détail de votre voyage
 
 07:09 - Paris Gare du Nord
